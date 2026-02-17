@@ -1,6 +1,7 @@
 import React from 'react';
 import MyContainer from '../share/MyContainer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Banner() {
   return (
@@ -41,7 +42,9 @@ export default function Banner() {
             {/* Tilted Image Container */}
             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="bg-white p-3 rounded-2xl shadow-2xl">
-                <img 
+                <Image
+                width={650}
+                    height={450} 
                   src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800" 
                   alt="Teacher with students" 
                   className="rounded-xl w-full h-auto object-cover"

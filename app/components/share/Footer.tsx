@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MyContainer from './MyContainer';
 
 
 export default function Footer() {
@@ -31,7 +32,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0f172a] text-white pt-16 pb-8 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+      <MyContainer >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           
           {/* Brand and Newsletter Section */}
@@ -53,7 +54,7 @@ export default function Footer() {
                 <input 
                   type="email" 
                   placeholder="Enter your email" 
-                  className="bg-white text-black px-4 py-2 rounded-lg flex-grow outline-none"
+                  className="bg-white text-black px-4 py-2 rounded-lg grow outline-none"
                 />
                 <button className="bg-[#bef264] text-black font-bold px-6 py-2 rounded-full hover:bg-[#a3e635] transition-colors">
                   Subscribe
@@ -104,7 +105,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-      </div>
+      </MyContainer>
     </footer>
   );
 }

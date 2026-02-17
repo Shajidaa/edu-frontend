@@ -26,7 +26,7 @@ const SOLUTIONS_DATA = {
   byUseCase: [
     { name: 'Professional services', href: '/solutions/services' },
     { name: 'Student engagement & active learning', href: '/solutions/engagement' },
-    { name: 'Gamified collaboration', href: '/solutions/gamified' },
+    { name: 'Gasified collaboration', href: '/solutions/gamified' },
     { name: 'Real-time student feedback', href: '/solutions/feedback' },
     { name: 'Differentiated instruction & practice', href: '/solutions/instruction' },
     { name: 'Assessment & test prep', href: '/solutions/assessment' },
@@ -131,7 +131,7 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-{/* Mega Menu Dropdown */}
+      {/* Mega Menu Dropdown */}
       <div 
         className={`absolute top-full left-0 w-full bg-white border-b shadow-2xl transition-all duration-300 ease-out hidden lg:block ${
           activeMenu === 'Products' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
