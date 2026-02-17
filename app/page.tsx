@@ -1,3 +1,4 @@
+import AudienceSection from "./components/home/AudienceSection";
 import Banner from "./components/home/Banner";
 import FeatureSection from "./components/home/FeatureSection";
 import LessonFeature from "./components/home/LessonFeature";
@@ -11,6 +12,7 @@ export default function Home() {
     <Statistics/>
     <FeatureSection/>
     <LessonFeature/>
+    <AudienceSection/>
         </>
   );
 }
