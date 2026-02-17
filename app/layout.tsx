@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lexend } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/share/navbar";
+import Footer from "./components/share/Footer";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
