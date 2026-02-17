@@ -152,7 +152,7 @@ export default function Navbar() {
             </div>
           </div>
           </div>
-          </div>
+     </div>
       {/* --- Why Pear Deck Learning? Dropdown --- */}
       <div 
         className={`absolute top-full left-[25%] w-[450px] bg-white border border-gray-100 rounded-xl shadow-2xl transition-all duration-300 hidden lg:block ${
