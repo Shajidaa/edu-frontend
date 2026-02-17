@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, } from 'lucide-react';
 import Logo from './Logo';
 import DesktopNavItem from './DesktopNavItem';
+import MyContainer from './MyContainer';
+
 
 // --- Data Configurations ---
 const NAV_LINKS = [
@@ -61,7 +63,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 w-full bg-white border-b border-gray-100 z-[100]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <MyContainer className=" mx-auto  h-20 flex items-center justify-between">
         
         <div className="flex items-center gap-8">
           <Logo />
@@ -90,7 +92,7 @@ export default function Navbar() {
             {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-      </div>
+      </MyContainer>
 
       {/* --- Solutions Dropdown --- */}
       <div 
