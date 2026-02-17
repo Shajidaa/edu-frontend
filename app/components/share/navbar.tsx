@@ -10,17 +10,17 @@ import DesktopNavItem from './DesktopNavItem';
 // --- Data Configuration ---
 const NAV_LINKS = [
   { name: 'Solutions', href: '/solutions', hasDropdown: true },
-  { name: 'Products', href: '/products', hasDropdown: true },
+  { name: 'Products', href: '', hasDropdown: true },
   { name: 'Why Pear Deck Learning?', href: '/about', hasDropdown: false },
   { name: 'Resources & Community', href: '/resources', hasDropdown: true },
   { name: 'Pricing', href: '/pricing', hasDropdown: false },
 ];
 
 const PRODUCTS = [
-  { name: 'Pear Start', href: '/products/start', desc: 'Kickstart your lessons' },
-  { name: 'Pear Deck', href: '/products/deck', desc: 'Interactive presentations' },
-  { name: 'Pear Practice', href: '/products/practice', desc: 'Gamified learning' },
-  { name: 'Pear Assessment', href: '/products/assessment', desc: 'Data-driven insights' },
+  { name: 'Edu Start', href: '/products/start', desc: 'Kickstart your lessons' },
+  { name: 'Edu Deck', href: '/products/deck', desc: 'Interactive presentations' },
+  { name: 'Edu Practice', href: '/products/practice', desc: 'Gamified learning' },
+  { name: 'Edu Assessment', href: '/products/assessment', desc: 'Data-driven insights' },
 ];
 
 export default function Navbar() {
@@ -88,7 +88,7 @@ export default function Navbar() {
         onMouseEnter={() => setActiveMenu('Products')}
         onMouseLeave={() => setActiveMenu(null)}
       >
-        <div className="max-w-6xl mx-auto grid grid-cols-12 gap-8 p-10">
+        <div className="max-w-3xl  mx-auto grid grid-cols-12 gap-8 p-10">
           <div className="col-span-8">
             <h3 className="text-[11px] font-black text-indigo-900 uppercase tracking-widest mb-6">Explore Products</h3>
             <div className="grid grid-cols-2 gap-x-12 gap-y-6">
