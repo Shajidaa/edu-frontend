@@ -1,6 +1,9 @@
+import Assessment from '@/app/components/districtsComponent/Assessment';
 import DistrictBanner from '@/app/components/districtsComponent/DistrictBanner';
 import DistrictDeck from '@/app/components/districtsComponent/DistrictDeck';
 import DistrictEdu from '@/app/components/districtsComponent/DistrictEdu';
+import DistrictPractice from '@/app/components/districtsComponent/DistrictPractice';
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,6 +16,8 @@ export default function districts() {
     <DistrictBanner/>
     <DistrictEdu/>
     <DistrictDeck/>
-    </>
+    <DistrictPractice/>
+    <Assessment/>
+        </>
   )
 }
