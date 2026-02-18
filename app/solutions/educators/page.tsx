@@ -1,14 +1,18 @@
 import EducatorHero from '@/app/components/educators/EducatorHero'
 import ImpactFeatures from '@/app/components/educators/ImpactFeatures'
 import InstructionSupport from '@/app/components/educators/InstructionSupport'
-import React from 'react'
+import PlanningSection from '@/app/components/educators/Plan'
+import SupportSection from '@/app/components/educators/Support'
+
 
 export default function EducatorPage() {
   return (
-    <div>
+    <>
       <EducatorHero/>
       <ImpactFeatures/>
       <InstructionSupport/>
-    </div>
+      <PlanningSection/>
+      <SupportSection/>
+    </>
   )
 }
