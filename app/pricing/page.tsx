@@ -148,7 +148,7 @@ export default function PricingPage() {
         </p>
       </header>
 
-      <nav className="max-w-5xl mx-auto px-6 mb-16">
+      <nav className="max-w-5xl  mx-auto px-6 mb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {["Pear Start", "Next Deck", "Pear Practice", "Pear Assessment"].map((tab) => (
             <button
