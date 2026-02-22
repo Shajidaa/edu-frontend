@@ -3,6 +3,7 @@ import { Lexend } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/share/navbar";
 import Footer from "./components/share/Footer";
+import Providers from "./components/Providers";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -26,9 +27,11 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} antialiased`}
       >
-        <Navbar/>
-        {children}
-        <Footer/>
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
