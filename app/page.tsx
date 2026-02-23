@@ -1,8 +1,8 @@
-import AudienceSection from "./components/home/AudienceSection";
-import Banner from "./components/home/Banner";
-import FeatureSection from "./components/home/FeatureSection";
-import LessonFeature from "./components/home/LessonFeature";
-import Statistics from "./components/home/Statistics";
+import AudienceSection from "./(marketing)/components/home/AudienceSection";
+import Banner from "./(marketing)/components/home/Banner";
+import FeatureSection from "./(marketing)/components/home/FeatureSection";
+import LessonFeature from "./(marketing)/components/home/LessonFeature";
+import Statistics from "./(marketing)/components/home/Statistics";
 
 
 export default function Home() {

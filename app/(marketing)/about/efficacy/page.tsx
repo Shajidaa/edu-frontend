@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookOpen,  GraduationCap, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import MyContainer from '@/app/components/share/MyContainer';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
 // --- Sub-components for better maintainability ---
 

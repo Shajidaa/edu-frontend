@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/share/navbar";
-import Footer from "./components/share/Footer";
-import Providers from "./components/Providers";
+import Navbar from "./(marketing)/components/share/navbar";
+import Footer from "./(marketing)/components/share/Footer";
+import Providers from "./(marketing)/components/Providers";
 
 const lexend = Lexend({
   variable: "--font-lexend",
