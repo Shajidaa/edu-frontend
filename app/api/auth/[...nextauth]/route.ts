@@ -2,6 +2,7 @@ import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import type { Account, User } from "next-auth";
 import type { JWT } from "next-auth/jwt";
+import { cookies } from "next/headers";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -14,8 +15,34 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async signIn({ user, account }: { user: User; account: Account | null }) {
       try {
-
         if (account?.provider === "google" && user.email) {
+          // Get role from cookie or default to student
+          const cookieStore = await cookies();
+          const roleCookie = cookieStore.get("pendingUserRole");
+          const role = roleCookie?.value || "student";
+
+          // Send user data to backend
+          const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: user.name,
+              email: user.email,
+              image: user.image,
+              role: role,
+            }),
+          });
+
+          if (!response.ok) {
+            console.error("Failed to save user to database");
+            return false;
+          }
+
+          // Clear the cookie after use
+          cookieStore.delete("pendingUserRole");
+
           return true;
         }
         return false;

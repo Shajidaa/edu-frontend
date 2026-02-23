@@ -6,6 +6,9 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {
   const handleGoogleSignIn = async (role: string) => {
+    // Store role in cookie before signing in
+    document.cookie = `pendingUserRole=${role}; path=/; max-age=300`;
+
     await signIn("google", {
       callbackUrl: "/",
       redirect: true,
