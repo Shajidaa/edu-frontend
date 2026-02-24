@@ -7,6 +7,8 @@ import { Menu, X, } from 'lucide-react';
 import Logo from './Logo';
 import DesktopNavItem from './DesktopNavItem';
 import MyContainer from './MyContainer';
+import { useSession } from "next-auth/react"
+
 
 
 // --- Data Configurations ---
@@ -53,13 +55,18 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
   const [, startTransition] = useTransition();
+  const { data: session } = useSession()
 
+console.log(session?.user?.image);
   useEffect(() => {
     startTransition(() => {
       setIsMobileOpen(false);
       setActiveMenu(null);
     });
   }, [pathname]);
+
+
+
 
   return (
     <nav className="sticky top-0 w-full bg-white border-b border-gray-100 z-[100]">
@@ -78,16 +85,24 @@ export default function Navbar() {
                 onMouseLeave={() => setActiveMenu(null)}
               />
             ))}
+
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Link href="/login/student" className="hidden xl:block text-[14px] font-bold text-slate-700 hover:text-green-600 transition-colors border-b-2 border-yellow-400 pb-0.5">
-            Student/Tutor log in
-          </Link>
-          <Link href="/signup" className="hidden sm:block bg-[#C1FF31] hover:bg-[#b5f020] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition-all active:scale-95 shadow-sm">
+          {session?.user ? (
+            <>
+            <img src={session.user.image || undefined} alt="User avatar" className="w-8 h-8 rounded-full" />
+              <Link href="/dashboard" className="hidden xl:block text-[14px] font-bold text-slate-700 hover:text-green-600 transition-colors border-b-2 border-yellow-400 pb-0.5">
+              Dashboard
+            </Link>
+            </>
+          
+          ) : (  <Link href="/signup" className="hidden sm:block bg-[#C1FF31] hover:bg-[#b5f020] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition-all active:scale-95 shadow-sm">
             Sign Up
-          </Link>
+          </Link>)}
+       
+        
           <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="lg:hidden p-2 text-slate-700">
             {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
