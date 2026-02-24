@@ -30,11 +30,11 @@ export default function Sidebar() {
 
   const tutorMenuItems = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'My Students', href: '/tutor/students', icon: Users },
-    { name: 'Assessments', href: '/tutor/assessment', icon: ClipboardCheck },
-    { name: 'Schedule', href: '/tutor/schedule', icon: Calendar },
-    { name: 'Materials', href: '/tutor/materials', icon: FileText },
-    { name: 'Analytics', href: '/tutor/analytics', icon: BarChart3 },
+    { name: 'My Students', href: '/dashboard/tutor/students', icon: Users },
+    { name: 'Assessments', href: '/dashboard/tutor/assessment', icon: ClipboardCheck },
+    { name: 'Schedule', href: '/dashboard/tutor/schedule', icon: Calendar },
+    { name: 'Materials', href: '/dashboard/tutor/materials', icon: FileText },
+    { name: 'Analytics', href: '/dashboard/tutor/analytics', icon: BarChart3 },
   ];
 
   const menuItems = userRole === 'tutor' ? tutorMenuItems : studentMenuItems;
