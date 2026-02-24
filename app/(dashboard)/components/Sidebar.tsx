@@ -11,12 +11,18 @@ import {
   Calendar,
   Settings,
   FileText,
-  ClipboardCheck
+  ClipboardCheck,
+  X
 } from 'lucide-react';
 import { useUserRole } from '../hooks/useUserRole';
 import Logo from '@/app/(marketing)/components/share/Logo';
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const { role: userRole, loading } = useUserRole();
 
@@ -41,58 +47,87 @@ export default function Sidebar() {
 
   if (loading) {
     return (
-      <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
-        <div className="h-16 flex items-center px-6 border-b border-gray-200">
-          <GraduationCap className="h-8 w-8 text-blue-600" />
+      <>
+        {/* Mobile Overlay */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={onClose}
+          />
+        )}
 
-        </div>
-        <div className="flex-1 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        </div>
-      </aside>
+        <aside className={`fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          } lg:translate-x-0`}>
+          <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200">
+            <Logo />
+            <button onClick={onClose} className="lg:hidden p-1 hover:bg-gray-100 rounded">
+              <X className="h-6 w-6 text-gray-600" />
+            </button>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          </div>
+        </aside>
+      </>
     );
   }
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
-      {/* Logo Section */}
-      <div className="h-16 flex items-center px-6 border-b border-gray-200">
-        <Logo />
-      </div>
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={onClose}
+        />
+      )}
 
-      {/* Navigation Menu */}
-      <nav className="flex-1 px-4 py-6 overflow-y-auto">
-        <ul className="space-y-1">
-          {menuItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50'
-                    }`}
-                >
-                  <item.icon className={`h-5 w-5 ${isActive ? 'text-blue-600' : 'text-gray-500'}`} />
-                  <span className="font-medium">{item.name}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <aside className={`fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        } lg:translate-x-0`}>
+        {/* Logo Section */}
+        <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200">
+          <Logo />
+          <button onClick={onClose} className="lg:hidden p-1 hover:bg-gray-100 rounded">
+            <X className="h-6 w-6 text-gray-600" />
+          </button>
+        </div>
 
-      {/* Settings Section */}
-      <div className="px-4 py-4 border-t border-gray-200">
-        <Link
-          href="/dashboard/settings"
-          className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-        >
-          <Settings className="h-5 w-5 text-gray-500" />
-          <span className="font-medium">Settings</span>
-        </Link>
-      </div>
-    </aside>
+        {/* Navigation Menu */}
+        <nav className="flex-1 px-4 py-6 overflow-y-auto">
+          <ul className="space-y-1">
+            {menuItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    <item.icon className={`h-5 w-5 ${isActive ? 'text-blue-600' : 'text-gray-500'}`} />
+                    <span className="font-medium">{item.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Settings Section */}
+        <div className="px-4 py-4 border-t border-gray-200">
+          <Link
+            href="/dashboard/settings"
+            onClick={onClose}
+            className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <Settings className="h-5 w-5 text-gray-500" />
+            <span className="font-medium">Settings</span>
+          </Link>
+        </div>
+      </aside>
+    </>
   );
 }
