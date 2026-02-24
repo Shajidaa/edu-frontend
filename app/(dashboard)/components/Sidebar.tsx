@@ -22,10 +22,10 @@ export default function Sidebar() {
 
   const studentMenuItems = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'Find Tutor', href: '/student/findTutor', icon: Users },
-    { name: 'My Sessions', href: '/student/sessions', icon: Calendar },
-    { name: 'Progress', href: '/student/progress', icon: BarChart3 },
-    { name: 'Resources', href: '/student/resources', icon: BookOpen },
+    { name: 'Find Tutor', href: '/dashboard/student/findTutor', icon: Users },
+    { name: 'My Sessions', href: '/dashboard/student/sessions', icon: Calendar },
+    { name: 'Progress', href: '/dashboard/student/progress', icon: BarChart3 },
+    { name: 'Resources', href: '/dashboard/student/resources', icon: BookOpen },
   ];
 
   const tutorMenuItems = [
