@@ -12,7 +12,7 @@ import {
   Settings,
   FileText,
   ClipboardCheck,
-  X
+  X, UserCircle
 } from 'lucide-react';
 import { useUserRole } from '../hooks/useUserRole';
 import Logo from '@/app/(marketing)/components/share/Logo';
@@ -41,6 +41,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     { name: 'Schedule', href: '/dashboard/tutor/schedule', icon: Calendar },
     { name: 'Materials', href: '/dashboard/tutor/materials', icon: FileText },
     { name: 'Analytics', href: '/dashboard/tutor/analytics', icon: BarChart3 },
+    { name: 'Profile', href: '/dashboard/tutor/profile', icon: UserCircle },
   ];
 
   const menuItems = userRole === 'tutor' ? tutorMenuItems : studentMenuItems;
