@@ -36,7 +36,7 @@ export function useUserRole() {
                         `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/student`
                     );
                     const tutorResponse = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/tutor`
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/tutors`
                     );
 
                     if (studentResponse.ok) {

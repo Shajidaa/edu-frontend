@@ -57,7 +57,7 @@ export default function Navbar() {
   const [, startTransition] = useTransition();
   const { data: session } = useSession()
 
-console.log(session?.user?.image);
+
   useEffect(() => {
     startTransition(() => {
       setIsMobileOpen(false);
