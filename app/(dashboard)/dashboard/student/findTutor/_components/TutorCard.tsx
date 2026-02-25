@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 
 const TutorCard = ({ tutor }: { tutor: 
-    {
+    {_id: string;
         name: string;
         email: string;
         image: string;
@@ -58,7 +58,7 @@ title: string;
          
         </div>
 
-        <Link href={`/users/profile/${tutor.email}`} className="w-full mt-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl transition-colors">
+        <Link href={`/dashboard/student/findTutor/${tutor.email}`} className="w-full mt-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl transition-colors">
           View Profile
         </Link>
       </div>
