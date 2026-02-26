@@ -5,16 +5,24 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { BookOpen, GraduationCap, Sparkles } from "lucide-react";
 import Bottom from "./_components/Bottom";
-
+import Swal from 'sweetalert2'
 export default function LoginPage() {
   const handleGoogleSignIn = async (role: string) => {
     // Store role in cookie before signing in
     document.cookie = `pendingUserRole=${role}; path=/; max-age=300`;
 
     await signIn("google", {
+
       callbackUrl: "/dashboard",
       redirect: true,
     });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Welcome to nextGen Learning",
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
 
   return (
