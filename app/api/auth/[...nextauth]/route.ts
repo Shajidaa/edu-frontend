@@ -56,13 +56,26 @@ export const authOptions: AuthOptions = {
       if (session.user) {
         session.user.id = token.sub;
         session.user.email = token.email;
+        session.user.role = token.role as string;
       }
       return session;
     },
 
-    async jwt({ token, user }: { token: JWT; user?: User }) {
+    async jwt({ token, user, trigger }: { token: JWT; user?: User; trigger?: string }) {
       if (user) {
         token.email = user.email;
+
+        // Fetch user role from backend
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/profile/${user.email}`);
+          if (response.ok) {
+            const data = await response.json();
+            token.role = data.role || "student";
+          }
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+          token.role = "student";
+        }
       }
       return token;
     },
