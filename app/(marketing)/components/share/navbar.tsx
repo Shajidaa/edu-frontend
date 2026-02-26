@@ -1,21 +1,18 @@
 "use client";
 
-import { useState, useEffect, useTransition } from 'react';
+import { useState, useEffect, useRef, useTransition } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
-import DesktopNavItem from './DesktopNavItem';
 import MyContainer from './MyContainer';
-import { useSession } from "next-auth/react"
-
-
+import { useSession } from "next-auth/react";
 
 // --- Data Configurations ---
 const NAV_LINKS = [
-  { name: 'Solutions', href: '', hasDropdown: true },
-  { name: 'Products', href: '', hasDropdown: true },
-  { name: 'Why Pear Deck Learning?', href: '', hasDropdown: true },
+  { name: 'Solutions', href: '/solutions', hasDropdown: true },
+  { name: 'Products', href: '/products', hasDropdown: true },
+  { name: 'Why Pear Deck Learning?', href: '/about', hasDropdown: true },
   { name: 'Resources & Community', href: '/resources', hasDropdown: true },
   { name: 'Pricing', href: '/pricing', hasDropdown: false },
 ];
@@ -28,7 +25,7 @@ const SOLUTIONS_DATA = {
   byUseCase: [
     { name: 'Professional services', href: '/solutions/services' },
     { name: 'Student engagement & active learning', href: '/solutions/engagement' },
-    { name: 'Gasified collaboration', href: '/solutions/gamified' },
+    { name: 'Gamified collaboration', href: '/solutions/gamified' },
     { name: 'Real-time student feedback', href: '/solutions/feedback' },
     { name: 'Differentiated instruction & practice', href: '/solutions/instruction' },
     { name: 'Assessment & test prep', href: '/solutions/assessment' },
@@ -37,12 +34,14 @@ const SOLUTIONS_DATA = {
     { name: 'GoGuardian safety & productivity', href: '/solutions/safety' },
   ]
 };
+
 const PRODUCTS = [
   { name: 'Pear Start', href: '/products/start', desc: 'Kickstart your lessons' },
   { name: 'Pear Deck', href: '/products/deck', desc: 'Interactive presentations' },
   { name: 'Pear Practice', href: '/products/practice', desc: 'Gamified learning' },
   { name: 'Pear Assessment', href: '/products/assessment', desc: 'Data-driven insights' },
 ];
+
 const WHY_PEAR_DATA = [
   { name: 'Customer stories', desc: 'Stories of school, district, and classroom success.', href: '/about/stories' },
   { name: 'Integration and partners', desc: 'The key connections that make our platform powerful.', href: '/about/partners' },
@@ -53,11 +52,23 @@ const WHY_PEAR_DATA = [
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const [, startTransition] = useTransition();
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
+  // Close menus when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
+  // Reset states on route change
   useEffect(() => {
     startTransition(() => {
       setIsMobileOpen(false);
@@ -65,151 +76,147 @@ export default function Navbar() {
     });
   }, [pathname]);
 
-
-
+  const toggleMenu = (name: string) => {
+    setActiveMenu(activeMenu === name ? null : name);
+  };
 
   return (
-    <nav className="sticky top-0 w-full bg-white border-b border-gray-100 z-[100]">
-      <MyContainer className=" mx-auto  h-20 flex items-center justify-between">
+    <nav ref={navRef} className="sticky top-0 w-full bg-white border-b border-gray-100 z-[100]">
+      <MyContainer className="mx-auto h-20 flex items-center justify-between">
         
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8 h-full">
           <Logo />
-          <div className="hidden lg:flex items-center h-20">
+          
+          {/* DESKTOP NAV (Now Click-based like Mobile) */}
+          <div className="hidden lg:flex items-center gap-1 h-full">
             {NAV_LINKS.map((link) => (
-              <DesktopNavItem 
-                key={link.name} 
-                link={link} 
-                isActive={activeMenu === link.name}
-                isCurrentPath={pathname === link.href}
-                onMouseEnter={() => setActiveMenu(link.name)}
-                onMouseLeave={() => setActiveMenu(null)}
-              />
+              <div key={link.name} className="relative h-full flex items-center">
+                {link.hasDropdown ? (
+                  <button
+                    onClick={() => toggleMenu(link.name)}
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-bold transition-colors rounded-lg hover:bg-gray-50 ${
+                      activeMenu === link.name ? 'text-green-600 bg-gray-50' : 'text-slate-700'
+                    }`}
+                  >
+                    {link.name}
+                    <ChevronDown size={16} className={`transition-transform ${activeMenu === link.name ? 'rotate-180' : ''}`} />
+                  </button>
+                ) : (
+                  <Link 
+                    href={link.href} 
+                    className="px-4 py-2 text-sm font-bold text-slate-700 hover:text-green-600 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
             ))}
-
           </div>
         </div>
 
         <div className="flex items-center gap-3">
           {session?.user ? (
-            <>
-            <img src={session.user.image || undefined} alt="User avatar" className="w-8 h-8 rounded-full" />
-              <Link href="/dashboard" className="hidden xl:block text-[14px] font-bold text-slate-700 hover:text-green-600 transition-colors border-b-2 border-yellow-400 pb-0.5">
-              Dashboard
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard" className=" xl:block text-sm font-bold text-slate-700 border-b-2 border-yellow-400">
+                Dashboard
+              </Link>
+
+              <img  src={session.user.image || "/api/placeholder/32/32"} alt="User" className="w-8 h-8 rounded-full" />
+            </div>
+          ) : (
+            <Link href="/signup" className="hidden sm:block bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
+              Sign Up
             </Link>
-            </>
-          
-          ) : (  <Link href="/signup" className="hidden sm:block bg-[#C1FF31] hover:bg-[#b5f020] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition-all active:scale-95 shadow-sm">
-            Sign Up
-          </Link>)}
-       
-        
+          )}
+
           <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="lg:hidden p-2 text-slate-700">
             {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </MyContainer>
 
-      {/* --- Solutions Dropdown --- */}
-      <div 
-        className={`absolute top-full left-[10%] w-[600px] bg-white border border-gray-100 rounded-xl shadow-2xl transition-all duration-300 hidden lg:block ${
-          activeMenu === 'Solutions' ? 'opacity-100 translate-y-2 visible' : 'opacity-0 translate-y-0 invisible pointer-events-none'
-        }`}
-        onMouseEnter={() => setActiveMenu('Solutions')}
-        onMouseLeave={() => setActiveMenu(null)}
-      >
-        <div className="p-8 grid grid-cols-2 gap-10">
-          <div>
-            <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-4">By User</h3>
-            <div className="space-y-6">
-              {SOLUTIONS_DATA.byUser.map(item => (
-                <Link key={item.name} href={item.href} className="group block">
-                  <p className="font-bold text-indigo-900 group-hover:text-green-600 transition-colors">{item.name}</p>
-                  <p className="text-xs text-slate-500 leading-normal">{item.desc}</p>
-                </Link>
-              ))}
+      {/* --- DESKTOP CLICKABLE DROPDOWNS --- */}
+      
+      {/* Solutions */}
+      {activeMenu === 'Solutions' && (
+        <div className="absolute top-full left-0 w-full bg-white border-b shadow-xl hidden lg:block animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="max-w-6xl mx-auto p-10 grid grid-cols-2 gap-16">
+            <div>
+              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">By User</h3>
+              <div className="space-y-8">
+                {SOLUTIONS_DATA.byUser.map(item => (
+                  <Link key={item.name} href={item.href} className="group block">
+                    <p className="font-bold text-xl text-indigo-900 group-hover:text-green-600 mb-1">{item.name}</p>
+                    <p className="text-sm text-slate-500 leading-relaxed max-w-sm">{item.desc}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-4">By Use Case</h3>
-            <div className="space-y-3">
-              {SOLUTIONS_DATA.byUseCase.map(item => (
-                <Link key={item.name} href={item.href} className="block text-[14px] font-medium text-slate-700 hover:text-green-600 transition-colors">
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="bg-gray-50/50 p-4 border-t border-gray-100 rounded-b-xl text-center">
-          <Link href="/solutions" className="text-sm font-bold text-indigo-900 border-b-2 border-yellow-400 inline-block">
-            See all solutions
-          </Link>
-        </div>
-      </div>
-      {/* Mega Menu Dropdown */}
-      <div 
-        className={`absolute top-full left-0 w-full bg-white border-b shadow-2xl transition-all duration-300 ease-out hidden lg:block ${
-          activeMenu === 'Products' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
-        }`}
-        onMouseEnter={() => setActiveMenu('Products')}
-        onMouseLeave={() => setActiveMenu(null)}
-      >
-        <div className="max-w-6xl mx-auto grid grid-cols-12 gap-8 p-10">
-          <div className="col-span-8">
-            <h3 className="text-[11px] font-black text-indigo-900 uppercase tracking-widest mb-6">Explore Products</h3>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
-              {PRODUCTS.map((item) => (
-                <Link key={item.name} href={item.href} className="group block">
-                  <p className={`font-bold transition-colors ${pathname === item.href ? 'text-green-600' : 'text-slate-900 group-hover:text-green-600'}`}>
+            <div>
+              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">By Use Case</h3>
+              <div className="grid grid-cols-1 gap-y-4">
+                {SOLUTIONS_DATA.byUseCase.map(item => (
+                  <Link key={item.name} href={item.href} className="text-md font-bold text-slate-700 hover:text-green-600 transition-colors">
                     {item.name}
-                  </p>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-4 text-center">
+             <Link href="/solutions" className="text-sm font-bold text-indigo-900 border-b-2 border-yellow-400">See all solutions</Link>
+          </div>
+        </div>
+      )}
+
+      {/* Products */}
+      {activeMenu === 'Products' && (
+        <div className="absolute top-full left-0 w-full bg-white border-b shadow-xl hidden lg:block animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="max-w-6xl mx-auto p-10">
+            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-8">Explore Products</h3>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-8">
+              {PRODUCTS.map((item) => (
+                <Link key={item.name} href={item.href} className="group block p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                  <p className="font-bold text-lg text-slate-900 group-hover:text-green-600">{item.name}</p>
+                  <p className="text-sm text-slate-500">{item.desc}</p>
                 </Link>
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Why Pear Deck */}
+      {activeMenu === 'Why Pear Deck Learning?' && (
+        <div className="absolute top-full left-0 w-full bg-white border-b shadow-xl hidden lg:block animate-in fade-in slide-in-from-top-2 duration-200">
+           <div className="max-w-4xl mx-auto p-10 grid grid-cols-2 gap-8">
+            {WHY_PEAR_DATA.map(item => (
+              <Link key={item.name} href={item.href} className="group block p-4 rounded-xl hover:bg-gray-50">
+                <p className="font-bold text-indigo-900 group-hover:text-green-600">{item.name}</p>
+                <p className="text-xs text-slate-500">{item.desc}</p>
+              </Link>
+            ))}
           </div>
-     </div>
-      {/* --- Why Pear Deck Learning? Dropdown --- */}
-      <div 
-        className={`absolute top-full left-[25%] w-[450px] bg-white border border-gray-100 rounded-xl shadow-2xl transition-all duration-300 hidden lg:block ${
-          activeMenu === 'Why Pear Deck Learning?' ? 'opacity-100 translate-y-2 visible' : 'opacity-0 translate-y-0 invisible pointer-events-none'
-        }`}
-        onMouseEnter={() => setActiveMenu('Why Pear Deck Learning?')}
-        onMouseLeave={() => setActiveMenu(null)}
-      >
-        <div className="p-8 space-y-6">
-          {WHY_PEAR_DATA.map(item => (
-            <Link key={item.name} href={item.href} className="group block">
-              <p className="font-bold text-indigo-900 group-hover:text-green-600 transition-colors">{item.name}</p>
-              <p className="text-xs text-slate-500 leading-normal">{item.desc}</p>
-            </Link>
-          ))}
         </div>
-        <div className="bg-gray-50/50 p-4 border-t border-gray-100 rounded-b-xl text-center">
-          <Link href="/about" className="text-sm font-bold text-indigo-900 border-b-2 border-yellow-400 inline-block">
-            Explore how we apply learning science
-          </Link>
-        </div>
-      </div>
-      {/* Mobile Menu */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b ${
-        isMobileOpen ? 'max-h-150 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
-      }`}>
-        <div className="px-6 py-8 space-y-6">
+      )}
+
+      {/* --- MOBILE OVERLAY (Full height like mobile) --- */}
+      <div className={`lg:hidden fixed inset-0 top-20 bg-white z-[90] transition-transform duration-300 ${isMobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="p-6 space-y-4">
           {NAV_LINKS.map((link) => (
-            <Link key={link.name} href={link.href} className="block text-lg font-bold text-slate-800 active:text-green-600">
-              {link.name}
-            </Link>
+            <div key={link.name} className="border-b border-gray-50 pb-4">
+              <div className="flex justify-between items-center py-2" onClick={() => link.hasDropdown && toggleMenu(link.name)}>
+                <Link href={link.href} className="text-xl font-bold text-slate-800">{link.name}</Link>
+                {link.hasDropdown && <ChevronDown className={`transition-transform ${activeMenu === link.name ? 'rotate-180' : ''}`} />}
+              </div>
+              {link.hasDropdown && activeMenu === link.name && (
+                <div className="pl-4 mt-2 space-y-3">
+                  {link.name === 'Solutions' && SOLUTIONS_DATA.byUser.map(s => <Link key={s.name} href={s.href} className="block text-slate-600 font-medium">{s.name}</Link>)}
+                  {link.name === 'Products' && PRODUCTS.map(p => <Link key={p.name} href={p.href} className="block text-slate-600 font-medium">{p.name}</Link>)}
+                </div>
+              )}
+            </div>
           ))}
-          <div className="pt-4 flex flex-col gap-3">
-            <Link href="/login" className="w-full text-center py-4 font-bold border-2 border-slate-900 rounded-full">
-              Log In
-            </Link>
-            <Link href="/signup" className="w-full text-center py-4 font-bold bg-[#C1FF31] rounded-full">
-              Sign Up
-            </Link>
-          </div>
         </div>
       </div>
     </nav>
