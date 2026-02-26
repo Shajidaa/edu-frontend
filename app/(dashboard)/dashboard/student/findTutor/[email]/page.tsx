@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
-import { CheckCircle, MapPin, Phone, GraduationCap, Briefcase, BookOpen } from 'lucide-react';
+import { CheckCircle, MapPin, Phone, GraduationCap, Briefcase, BookOpen, Calendar } from 'lucide-react';
+import Link from 'next/link';
+import Script from 'next/script';
 
 export default function TutorProfilePage() {
   const { email } = useParams();
@@ -23,11 +25,26 @@ export default function TutorProfilePage() {
     if (email) fetchTutorProfile();
   }, [email]);
 
+  // Function to trigger the Calendly popup
+  const openCalendly = () => {
+    // @ts-ignore
+    if (window.Calendly) {
+      // @ts-ignore
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/shajidaislam34/30min'
+      });
+    } else {
+      alert("Calendly is still loading. Please try again in a second.");
+    }
+  };
+
   if (loading) return <div className="p-10 text-emerald-600 font-bold">Loading Profile...</div>;
   if (!tutor) return <div className="p-10 text-red-500 font-bold">Tutor not found.</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-sm rounded-3xl my-10 border border-slate-100">
+    <div className="max-w-7xl mx-auto p-6 bg-white shadow-sm rounded-3xl my-10 border border-slate-100">
+      <Link href={'/dashboard/student/findTutor'} className="text-emerald-600 hover:text-emerald-700 font-medium mb-4 inline-block">← Back to Find Tutors</Link>
+      
       {/* Header Section */}
       <div className="flex flex-col md:flex-row items-center gap-6 border-b pb-8 border-emerald-50">
         <img src={tutor.image} alt={tutor.name} className="w-32 h-32 rounded-2xl object-cover ring-4 ring-emerald-50" />
@@ -41,6 +58,15 @@ export default function TutorProfilePage() {
             <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {tutor.profile?.location}</span>
             <span className="flex items-center gap-1"><Phone className="w-4 h-4" /> {tutor.profile?.phone}</span>
           </div>
+          
+          {/* Schedule Button inside the Header/Card */}
+          <button 
+            onClick={openCalendly}
+            className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-bold mt-5 rounded-xl hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-100"
+          >
+            <Calendar className="w-5 h-5" />
+            Schedule time with me
+          </button>
         </div>
       </div>
 
@@ -79,6 +105,10 @@ export default function TutorProfilePage() {
           </div>
         </div>
       </div>
+
+      {/* Calendly Resources */}
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
     </div>
   );
 }
