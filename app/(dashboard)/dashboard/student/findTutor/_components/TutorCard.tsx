@@ -47,16 +47,7 @@ title: string;
           {tutor.profile?.title}
         </p>
 
-        {/* Rating & Location Footer */}
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
-          <div className="flex items-center text-slate-600 text-sm">
-            <Star className="w-4 h-4 text-yellow-500 mr-1" fill="currentColor" />
-            <span className="font-semibold">{tutor.profile?.rating}</span>
-            <span className="text-slate-400 ml-1">({tutor.profile?.totalReviews})</span>
-          </div>
-          
-         
-        </div>
+     
 
         <Link href={`/dashboard/student/findTutor/${tutor.email}`} className="w-full mt-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl transition-colors">
           View Profile
