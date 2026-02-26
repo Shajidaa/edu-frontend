@@ -124,7 +124,7 @@ export default function Navbar() {
               <img  src={session.user.image || "/api/placeholder/32/32"} alt="User" className="w-8 h-8 rounded-full" />
             </div>
           ) : (
-            <Link href="/signup" className="hidden sm:block bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
+            <Link href="/signup" className="hidden text-nowrap sm:block bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
               Sign Up
             </Link>
           )}
@@ -215,8 +215,12 @@ export default function Navbar() {
                   {link.name === 'Products' && PRODUCTS.map(p => <Link key={p.name} href={p.href} className="block text-slate-600 font-medium">{p.name}</Link>)}
                 </div>
               )}
+          
             </div>
           ))}
+              <Link href="/signup" className=" bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
+              Sign Up
+            </Link>
         </div>
       </div>
     </nav>
