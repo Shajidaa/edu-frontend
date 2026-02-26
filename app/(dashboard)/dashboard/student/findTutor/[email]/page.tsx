@@ -42,7 +42,7 @@ export default function TutorProfilePage() {
   if (!tutor) return <div className="p-10 text-red-500 font-bold">Tutor not found.</div>;
 
   return (
-    <div className="max-w-7xl mx-auto p-6 bg-white shadow-sm rounded-3xl my-10 border border-slate-100">
+    <div className=" p-6 bg-white shadow-sm rounded-3xl my-10 border border-slate-100">
       <Link href={'/dashboard/student/findTutor'} className="text-emerald-600 hover:text-emerald-700 font-medium mb-4 inline-block">← Back to Find Tutors</Link>
       
       {/* Header Section */}

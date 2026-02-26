@@ -1,5 +1,5 @@
-import React from 'react';
-import { CheckCircle, Star } from 'lucide-react'; // Lucide icons look great with green themes
+
+import { CheckCircle,} from 'lucide-react'; 
 import Link from 'next/link';
 
 
@@ -11,8 +11,8 @@ const TutorCard = ({ tutor }: { tutor:
         email: string;
         image: string;
         profile: {
-title: string;
-   verified: boolean;
+        title: string;
+     verified: boolean;
             rating: number;
             totalReviews: number;
             subjects:{

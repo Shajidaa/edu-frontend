@@ -28,7 +28,7 @@ export default function Find() {
   }, []); 
 
   if (loading) return <div className="p-10 text-emerald-600 font-bold">Loading tutors...</div>;
-console.log(data);
+
 
   return (
     <div className="p-6">
