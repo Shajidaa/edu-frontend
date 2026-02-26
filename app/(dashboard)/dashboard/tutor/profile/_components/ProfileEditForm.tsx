@@ -193,13 +193,15 @@ export function ProfileEditForm({ formData, setFormData, onSubmit, onCancel, sav
                                 placeholder="Subject (e.g., Algebra)"
                                 value={sub.name}
                                 onChange={e => updateArrayField('subjects', idx, 'name', e.target.value)}
-                                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:border-[#0f3d2e] focus:ring-1 focus:ring-[#d9f99d]/20 outline-none"
+                                className="flex-1 px-3 py-2 border border-gray-300 
+                                rounded-lg focus:border-[#0f3d2e] focus:ring-1 focus:ring-[#d9f99d]/20 outline-none"
                             />
                             <input
                                 placeholder="Level (e.g., Grades 6-12)"
                                 value={sub.level}
                                 onChange={e => updateArrayField('subjects', idx, 'level', e.target.value)}
-                                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:border-[#0f3d2e] focus:ring-1 focus:ring-[#d9f99d]/20 outline-none"
+                                className="flex-1 px-3 py-2 border border-gray-300 
+                                rounded-lg focus:border-[#0f3d2e] focus:ring-1 focus:ring-[#d9f99d]/20 outline-none"
                             />
                             <button
                                 type="button"
