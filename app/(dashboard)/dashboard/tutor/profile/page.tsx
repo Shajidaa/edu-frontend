@@ -74,17 +74,17 @@ export default function ProfilePage() {
     };
 
     if (loading) return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+            <Loader2 className="w-8 h-8 animate-spin text-[#0f3d2e]" />
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
                 {message && (
-                    <div className={`mb-6 p-4 rounded-lg border ${message.includes('success') ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-                        {message}
+                    <div className={`mb-6 p-4 rounded-xl border-2 shadow-lg ${message.includes('success') ? 'bg-[#d9f99d]/20 border-[#d9f99d] text-[#0f3d2e]' : 'bg-red-50 border-red-300 text-red-800'}`}>
+                        <p className="font-semibold">{message}</p>
                     </div>
                 )}
 
