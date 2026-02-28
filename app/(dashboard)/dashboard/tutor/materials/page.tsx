@@ -9,7 +9,7 @@ import {
 interface Material {
   id: string;
   name: string;
-  type: 'pdf' | 'doc' | 'video';
+  type: 'pdf' |  'video';
   size: string;
   sharedWith: number; // Number of students
   uploadDate: string;
@@ -19,7 +19,7 @@ export default function MaterialsPage() {
   const [materials] = useState<Material[]>([
     { id: '1', name: 'Calculus_Final_Review.pdf', type: 'pdf', size: '2.4 MB', sharedWith: 12, uploadDate: 'Feb 20, 2026' },
     { id: '2', name: 'Intro_to_Physics_Lecture.mp4', type: 'video', size: '45 MB', sharedWith: 8, uploadDate: 'Feb 18, 2026' },
-    { id: '3', name: 'Lab_Report_Template.docx', type: 'doc', size: '1.1 MB', sharedWith: 25, uploadDate: 'Feb 15, 2026' },
+    { id: '3', name: 'Lab_Report_Template.docx', type: 'pdf', size: '1.1 MB', sharedWith: 25, uploadDate: 'Feb 15, 2026' },
   ]);
 
   const getFileIcon = (type: string) => {
@@ -57,7 +57,7 @@ export default function MaterialsPage() {
           />
         </div>
         <div className="flex gap-2">
-          {['All', 'PDFs', 'Videos', 'Docs'].map(tab => (
+          {['All', 'PDFs', 'Videos'].map(tab => (
             <button key={tab} className="px-4 py-2 text-xs font-bold text-slate-500 hover:bg-slate-50 rounded-lg border border-transparent hover:border-slate-100">
               {tab}
             </button>
