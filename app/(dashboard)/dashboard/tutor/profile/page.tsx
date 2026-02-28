@@ -81,7 +81,7 @@ export default function ProfilePage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
+            <div >
                 {message && (
                     <div className={`mb-6 p-4 rounded-xl border-2 shadow-lg ${message.includes('success') ? 'bg-[#d9f99d]/20 border-[#d9f99d] text-[#0f3d2e]' : 'bg-red-50 border-red-300 text-red-800'}`}>
                         <p className="font-semibold">{message}</p>
