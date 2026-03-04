@@ -47,6 +47,11 @@ export default function Navbar() {
 
         {/* --- Desktop Navigation --- */}
         <div className="hidden md:flex items-center gap-8 h-full">
+          <Link href="/kidsForCoding" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
+            Home
+          </Link>
           <NavNavItem 
             label="Courses" 
             href="/kidsForCoding/courses" 
@@ -129,7 +134,7 @@ function NavNavItem({ label, href, sublinks, isOpen, onToggle }: any) {
 }
 
 // --- Mobile Sub-Component ---
-function MobileNavItem({ label, href, sublinks }: any) {
+function MobileNavItem({ label, href, sublinks }:{label: string, href: string, sublinks: any[]}) {
   const [expanded, setExpanded] = useState(false);
   return (
     <div className="border-b border-gray-50 last:border-none">

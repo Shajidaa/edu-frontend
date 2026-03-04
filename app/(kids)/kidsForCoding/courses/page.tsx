@@ -18,7 +18,7 @@ interface Course {
 }
 
 export default function CoursesPage() {
-  const { data, loading, error } = useFetch<Course[]>('/courses');
+  const { data, loading, error } = useFetch<Course>('/courses');
 
   if (loading) return <div className="p-10 text-center text-green-600 font-bold">Loading courses...</div>;
   if (error) return <div className="p-10 text-red-500">Something went wrong: {error.message}</div>;
