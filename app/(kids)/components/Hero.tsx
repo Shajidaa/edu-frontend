@@ -2,15 +2,16 @@ import React from 'react';
 import Image from 'next/image';
 import { FaVideo, FaChalkboardTeacher, FaChartLine, FaStar, FaGoogle, FaAmazon, FaCheckCircle } from 'react-icons/fa';
 import { SiYcombinator } from 'react-icons/si';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-white py-12 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section className="relative w-full bg-green-100/50 py-12 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Subtle Background Decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50 -z-10" />
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <MyContainer className=" grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Content */}
         <div className="order-2 lg:order-1">
@@ -98,7 +99,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </MyContainer>
 
       {/* Trust Section */}
       <div className="max-w-7xl mx-auto mt-24">
