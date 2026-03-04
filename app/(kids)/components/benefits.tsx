@@ -35,7 +35,7 @@ export default function Benefits() {
           <div className="absolute top-6 left-6 text-emerald-300 text-2xl opacity-50">✦</div>
           
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-8">
-            Every student at Codingal gets these amazing benefits!
+            Every student at KidsForCoding gets these amazing benefits!
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
