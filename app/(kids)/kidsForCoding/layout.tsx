@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/app/(marketing)/components/share/Footer";
 import Navbar from "../components/Navbar";
 
 
@@ -20,7 +21,7 @@ export default function Layout({
           
                 {children}
              
-     
+     <Footer/>
       </body>
     </html>
   );
