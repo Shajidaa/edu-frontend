@@ -5,6 +5,9 @@ import Schedule from '../components/schedule'
 import Benefits from '../components/benefits'
 import Testimonials from '../components/Testimonials'
 
+import TeacherSection from '../components/CoursesHero'
+import Satisfaction from '../components/satisfaction'
+
 export default function KidsForCoding() {
   return (
    <>
@@ -13,6 +16,8 @@ export default function KidsForCoding() {
    <Schedule/>
    <Benefits/>
    <Testimonials/>
+   <TeacherSection/>
+   <Satisfaction/>
    </>
   )
 }
