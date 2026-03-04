@@ -97,7 +97,7 @@ export default function Navbar() {
 }
 
 // --- Desktop Sub-Component ---
-function NavNavItem({ label, href, sublinks, isOpen, onToggle }: any) {
+function NavNavItem({ label, href, sublinks, isOpen, onToggle }: {label: string, href: string, sublinks: any[], isOpen: boolean, onToggle: () => void}) {
   const pathname = usePathname();
   const isActive = pathname.startsWith(href);
 

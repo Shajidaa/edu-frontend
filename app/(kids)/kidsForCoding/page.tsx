@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '../components/Hero'
 import CoursesSection from '../components/CoursesSection'
 import Schedule from '../components/schedule'
+import Benefits from '../components/benefits'
 
 export default function KidsForCoding() {
   return (
@@ -9,6 +10,7 @@ export default function KidsForCoding() {
    <Hero/>
    <CoursesSection/>
    <Schedule/>
+   <Benefits/>
    </>
   )
 }
