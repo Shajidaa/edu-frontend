@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'; 
 import { Star, ChevronDown } from 'lucide-react';
+import { redirect } from 'next/navigation';
 
 export default function RegisterPage() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [grade, setGrade] = useState("");
 
   const grades = Array.from({ length: 12 }, (_, i) => `Grade ${i + 1}`);
+  
 const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     // Handle form submission logic here, e.g., send data to backend or redirect to booking page
@@ -23,7 +25,7 @@ const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
     setGrade("");
     setPhoneNumber('');
     // Redirect to booking page or show success message
-    alert("Thank you for registering! We will contact you soon.");
+   redirect('/kidsForCoding/booking')
  }  
 }
   return (
