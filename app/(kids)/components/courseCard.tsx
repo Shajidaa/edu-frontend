@@ -1,4 +1,6 @@
-import React from 'react';
+
+
+import Link from 'next/link';
 import { FaGraduationCap, FaBookOpen, FaRegClock, FaCheckCircle, FaDownload } from 'react-icons/fa';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 
@@ -67,10 +69,14 @@ export default function CourseCard({ course }: { course: Course }) {
           <button className="flex items-center justify-center gap-2 w-full text-green-600 font-semibold hover:text-green-700 transition-colors">
             পাঠ্যক্রম ডাউনলোড করুন <FaDownload size={14} />
           </button>
-          <button className="w-full py-3 border-2 border-green-600 text-green-600 font-bold rounded-lg hover:bg-green-50 transition-colors">
-            Try a free lesson
-          </button>
+        <Link 
+  href="/kidsForCoding/register"
+  className="block text-center w-full py-3 border-2 border-green-600 text-green-600 font-bold rounded-lg hover:bg-green-50 transition-colors"
+>
+  Try a free lesson
+</Link>
         </div>
+       
       </div>
     </div>
   );

@@ -66,9 +66,9 @@ export default function Navbar() {
             isOpen={activeDropdown === 'Camps'}
             onToggle={() => toggleDropdown('Camps')}
           />
-          <button className="bg-green-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-700 transition-all">
+          <Link href={'/kidsForCoding/register'} className="bg-green-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-700 transition-all">
             Try a Free Lesson
-          </button>
+          </Link>
         </div>
 
         {/* --- Mobile Menu Toggle --- */}
@@ -86,9 +86,9 @@ export default function Navbar() {
           <div className="flex flex-col p-4 gap-2">
             <MobileNavItem label="Courses" href="/kidsForCoding/courses" sublinks={coursesLinks} />
             <MobileNavItem label="Camps" href="/kidsForCoding/camps" sublinks={campsLinks} />
-            <button className="w-full mt-4 bg-green-600 text-white py-3 rounded-lg font-bold">
+            <Link href="/kidsForCoding/register" className="w-full mt-4 bg-green-600 text-white py-3 rounded-lg font-bold">
               Try a Free Lesson
-            </button>
+            </Link>
           </div>
         </div>
       )}
