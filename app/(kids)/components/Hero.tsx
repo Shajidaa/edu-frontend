@@ -47,20 +47,7 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* Search/CTA Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch gap-3 p-2 bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-100 mb-6">
-            <div className="flex items-center flex-1 px-4 py-3">
-              <span className="text-slate-400 font-bold border-r border-slate-200 pr-3 mr-3">+880</span>
-              <input 
-                type="tel" 
-                placeholder="Enter mobile number" 
-                className="w-full outline-none text-slate-700"
-              />
-            </div>
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-emerald-200 whitespace-nowrap">
-              Try a free lesson
-            </button>
-          </div>
+       
 
           <p className="text-sm text-slate-500 flex items-center gap-2">
             <FaCheckCircle className="text-emerald-500" />

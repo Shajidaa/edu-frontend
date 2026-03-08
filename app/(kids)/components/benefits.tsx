@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaCheckCircle, FaAward, FaInfinity, FaHeadset, FaFileAlt, FaChartLine, FaWallet, FaShieldAlt, FaGamepad } from 'react-icons/fa';
 import { PiChalkboardTeacherFill } from "react-icons/pi";
@@ -67,9 +68,9 @@ export default function Benefits() {
           <p className="text-slate-500 text-sm mb-6">
             Start with a free trial lesson at your preferred date & time. No commitments, fees, or credit card required.
           </p>
-          <button className="bg-green-600 hover:bg-green-700 text-white font-black px-10 py-4 rounded-lg text-lg transition-all shadow-lg shadow-green-100 active:scale-95 uppercase tracking-wide">
+          <Link href={'/kidsForCoding/register'} className="bg-green-600 hover:bg-green-700 text-white font-black px-10 py-4 rounded-lg text-lg transition-all shadow-lg shadow-green-100 active:scale-95 uppercase tracking-wide">
             Try a free lesson
-          </button>
+          </Link>
         </div>
       </div>
     </section>

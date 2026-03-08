@@ -1,4 +1,5 @@
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
+import Link from 'next/link';
 import React from 'react';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
@@ -86,9 +87,9 @@ export default function Schedule() {
                   </div>
                 </div>
 
-                <button className="w-full py-2.5 border-2 border-green-600 text-green-600 font-bold rounded-lg mb-6 hover:bg-green-50 transition-colors">
+                <Link href={'/kidsForCoding/register'} className="w-full py-2.5 text-center border-2 border-green-600 text-green-600 font-bold rounded-lg mb-6 hover:bg-green-50 transition-colors">
                   Try a free lesson
-                </button>
+                </Link>
 
                 <div className="text-center mb-6">
                   <span className="font-bold text-slate-800 underline decoration-green-500 decoration-2 underline-offset-4">
