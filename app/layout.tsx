@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
+import WhatsAppLiveWidget from "./(marketing)/components/WhatsAppLive/page";
 
 
 const lexend = Lexend({
@@ -27,7 +28,7 @@ export default function RootLayout({
       >
         
           {children}
-       
+         <WhatsAppLiveWidget/>
       </body>
     </html>
   );
