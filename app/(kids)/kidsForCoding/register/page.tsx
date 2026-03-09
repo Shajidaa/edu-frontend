@@ -15,7 +15,7 @@ export default function RegisterPage() {
   
 const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-    // Handle form submission logic here, e.g., send data to backend or redirect to booking page
+    
     const formData = {
         phoneNumber,
         grade
@@ -24,13 +24,13 @@ const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
         alert("Please fill in all fields");
         return;
     }
-    
+
  if(phoneNumber && grade){
  
     setGrade("");
     setPhoneNumber('');
    
-    // Redirect to booking page or show success message
+    
    redirect('/kidsForCoding/booking')
  }  
 }

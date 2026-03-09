@@ -1,14 +1,14 @@
 "use client";
 
-import React from 'react';
 import { InlineWidget } from "react-calendly";
 import { HiStar, HiCheckCircle, HiPhone, HiClock, HiUserGroup } from 'react-icons/hi';
 import { FaQuoteLeft } from 'react-icons/fa';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
 export default function Booking() {
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <MyContainer className=" grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         {/* LEFT COLUMN: Testimonial Card */}
         <div className="lg:col-span-4 space-y-6">
@@ -125,7 +125,7 @@ export default function Booking() {
           </div>
         </div>
 
-      </div>
+      </MyContainer>
     </div>
   );
 }
