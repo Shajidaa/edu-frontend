@@ -11,7 +11,7 @@ import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 const coursesLinks = [
   { label: 'AI and Machine Learning', href: '/kidsForCoding/courses/ai-and-machine-learning' },
   { label: 'App Development', href: '/kidsForCoding/courses/app-development' },
-  { label: 'Game Development', href: '/kidsForCoding/courses/game-development' },
+  { label: 'Game Development', href: '/kidsForCoding/courses/gameDevelopment' },
   { label: 'Web Development', href: '/kidsForCoding/courses/website' },
   { label: 'Python', href: '/kidsForCoding/courses/python' },
   { label: 'Scratch Programming', href: '/kidsForCoding/scratch-programming' }
