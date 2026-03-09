@@ -1,7 +1,13 @@
-import React from 'react'
+
+import ThanksHeroSection from '../_components/thanksGiving'
+import CampCard from '../_components/campCard'
 
 export default function page() {
   return (
-    <div>page</div>
+    <>
+    
+      <ThanksHeroSection />
+    <CampCard />  
+    </>
   )
 }
