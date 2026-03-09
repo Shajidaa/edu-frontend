@@ -84,9 +84,12 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
           <div className="flex flex-col p-4 gap-2">
+            <Link href="/kidsForCoding" className="w-full py-3 text-center text-gray-800 font-medium">
+              Home
+            </Link>
             <MobileNavItem label="Courses" href="/kidsForCoding/courses" sublinks={coursesLinks} />
             <MobileNavItem label="Camps" href="/kidsForCoding/camps" sublinks={campsLinks} />
-            <Link href="/kidsForCoding/register" className="w-full mt-4 bg-green-600 text-white py-3 rounded-lg font-bold">
+            <Link href="/kidsForCoding/register" className="w-full mt-4 text-center bg-green-600 text-white py-3 rounded-lg font-bold">
               Try a Free Lesson
             </Link>
           </div>
