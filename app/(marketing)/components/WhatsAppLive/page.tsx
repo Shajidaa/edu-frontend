@@ -26,7 +26,7 @@ export default function WhatsAppLiveWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end font-sans">
+    <div className="fixed bottom-6 right-6 z-9999 flex flex-col items-end font-sans">
       
       {/* --- Chat Window --- */}
       <AnimatePresence>
@@ -35,7 +35,7 @@ export default function WhatsAppLiveWidget() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-4 w-[350px] overflow-hidden rounded-2xl bg-white shadow-2xl border border-gray-100"
+            className="mb-4 w-87.5 overflow-hidden rounded-2xl bg-white shadow-2xl border border-gray-100"
           >
             {/* Header */}
             <div className="bg-[#075e54] p-4 text-white">

@@ -1,7 +1,12 @@
 import React from 'react'
+import BlackHeroSection from '../_components/BlackHeroSection'
+import CampCard from '../_components/campCard'
 
 export default function page() {
   return (
-    <div>page</div>
+    <>
+    <BlackHeroSection/>
+    <CampCard />
+    </>
   )
 }
