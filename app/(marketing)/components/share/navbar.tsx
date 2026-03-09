@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { name: 'Why Pear Deck Learning?', href: '/about', hasDropdown: true },
   { name: 'Resources & Community', href: '/resources', hasDropdown: true },
   { name: 'Pricing', href: '/pricing', hasDropdown: false },
-  {name:'Kids for Coding', href:'/kidsForCoding', hasDropdown:false}
+  {name:'Kids Section', href:'/kidsForCoding', hasDropdown:false}
 ];
 
 const SOLUTIONS_DATA = {
