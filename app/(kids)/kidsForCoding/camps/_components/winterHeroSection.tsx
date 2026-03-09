@@ -71,7 +71,7 @@ export default function WinterHeroSection() {
               </div>
             </div>
 
-            {/* Trustpilot Placeholder */}
+            {/* Trust pilot Placeholder */}
             <div className="flex flex-col gap-1 pt-4 border-t border-slate-800 max-w-xs">
               <div className="flex items-center gap-1">
                 <Star className="w-4 h-4 fill-emerald-500 text-emerald-500" />

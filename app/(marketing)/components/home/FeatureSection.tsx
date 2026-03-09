@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import MyContainer from '../share/MyContainer';
+import Link from 'next/link';
 
 export default function FeatureSection() {
   return (
@@ -35,9 +36,9 @@ export default function FeatureSection() {
             deliver differentiated support for every learner, and assess 
             progress whenever it&rsquo;s needed.
           </p>
-          <button className="bg-[#bef264] text-black font-bold px-8 py-3 rounded-full border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all">
+          <Link href={'/kidsForCoding/register'} className="bg-[#bef264] text-black font-bold px-8 py-3 rounded-full border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all">
             Request a demo
-          </button>
+          </Link>
         </div>
       </MyContainer>
     </section>

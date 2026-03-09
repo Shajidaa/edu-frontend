@@ -44,7 +44,7 @@ export default function CampCard() {
           </div>
 
           {/* Content Section */}
-          <div className="p-6 flex flex-col flex-grow">
+          <div className="p-6 flex flex-col grow">
             <h3 className="text-xl font-extrabold text-slate-800 leading-tight mb-3 group-hover:text-emerald-600 transition-colors">
               {item.title}
             </h3>
@@ -66,7 +66,7 @@ export default function CampCard() {
             </p>
 
             {/* Learning Outcomes */}
-            <div className="space-y-2.5 mb-8 flex-grow">
+            <div className="space-y-2.5 mb-8 grow">
               <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
                 Learning Outcomes
               </span>

@@ -95,7 +95,7 @@ export default function WebsiteLearning() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-slate-800 mb-4">Why learn Web Development?</h2>
             <p className="text-slate-600 mb-4">
-              Web development is the most visible form of coding. It teaches students "Responsive Design"—making things look good on phones, tablets, and PCs—and introduces them to the global architecture of the cloud.
+              Web development is the most visible form of coding. It teaches students &rdquo;Responsive Design&rdquo;—making things look good on phones, tablets, and PCs—and introduces them to the global architecture of the cloud.
             </p>
             
             <button className="text-emerald-600 font-bold text-sm underline mt-2">Show more</button>

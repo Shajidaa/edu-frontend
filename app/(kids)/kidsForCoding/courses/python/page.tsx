@@ -63,11 +63,11 @@ export default function PythonLearning() {
           </nav>
           
           <h1 className="text-4xl font-extrabold text-slate-900 leading-tight mb-6">
-            Master the World's Most Popular Language with <span className="text-emerald-600">Python Courses</span> for Kids
+            Master the World&rdquo;s Most Popular Language with <span className="text-emerald-600">Python Courses</span> for Kids
           </h1>
           
           <p className="text-slate-600 mb-8 leading-relaxed">
-            Python is the language of the future. From powering Netflix's recommendation engine to controlling NASA's rovers, our Python courses take students from the basics of syntax to building complex data-driven applications.
+            Python is the language of the future. From powering Netflix&rdquo;s recommendation engine to controlling NASA&rdquo;s rovers, our Python courses take students from the basics of syntax to building complex data-driven applications.
             <span className="text-emerald-600 font-semibold cursor-pointer ml-1">Read More</span>
           </p>
 
@@ -86,7 +86,7 @@ export default function PythonLearning() {
               <p className="text-sm text-slate-500 font-medium">4.9 / 5 stars</p>
             </div>
             <div className="flex flex-col">
-              <span className="text-emerald-500 font-bold flex items-center gap-1">Trustpilot <Star className="w-3 h-3 fill-current"/></span>
+              <span className="text-emerald-500 font-bold flex items-center gap-1">Trust pilot <Star className="w-3 h-3 fill-current"/></span>
               <p className="text-sm text-slate-500 font-medium">TrustScore 4.8</p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function PythonLearning() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-slate-800 mb-4">Why Python for Young Coders?</h2>
             <p className="text-slate-600 mb-2">
-              Python is famous for its "readability," making it the perfect first text-based language. It allows students to focus on problem-solving and logic without getting bogged down by overly complex syntax, opening doors to AI, Data Science, and Web Backend.
+              Python is famous for its &rdquo;readability,&rdquo; making it the perfect first text-based language. It allows students to focus on problem-solving and logic without getting bogged down by overly complex syntax, opening doors to AI, Data Science, and Web Backend.
             </p>
             <button className="text-emerald-600 font-bold text-sm underline">Show more</button>
           </section>

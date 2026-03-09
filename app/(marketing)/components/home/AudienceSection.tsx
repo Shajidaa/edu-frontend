@@ -1,3 +1,5 @@
+
+
 export default function AudienceSection() {
   const cards = [
     { title: "Educators", color: "bg-[#facc15]", text: "For teachers, the right tools and support mean less time spent on paperwork and more time spent shaping young minds." },
