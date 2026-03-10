@@ -20,6 +20,7 @@ export function ProfileEditForm({ formData, setFormData, onSubmit, onCancel, sav
         newArray[index] = { ...newArray[index], [field]: value };
         updateField(arrayName, newArray);
     };
+console.log(formData);
 
     return (
         <form onSubmit={onSubmit} className="space-y-6">
@@ -89,6 +90,17 @@ export function ProfileEditForm({ formData, setFormData, onSubmit, onCancel, sav
                                 placeholder="+1 (555) 123-4567"
                                 value={formData.phone}
                                 onChange={(e) => updateField('phone', e.target.value)}
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#0f3d2e] focus:ring-2 focus:ring-[#d9f99d]/20 transition-all outline-none"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                                <Phone className="w-4 h-4 text-[#0f3d2e]" /> Calendly Link
+                            </label>
+                            <input
+                                placeholder="https://calendly.com/your-link"
+                                value={formData.calendlyLink}
+                                onChange={(e) => updateField('calendlyLink', e.target.value)}
                                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#0f3d2e] focus:ring-2 focus:ring-[#d9f99d]/20 transition-all outline-none"
                             />
                         </div>

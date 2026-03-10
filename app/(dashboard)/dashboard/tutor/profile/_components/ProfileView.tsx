@@ -3,6 +3,7 @@ import { ProfileData } from '../page';
 
 export function ProfileView({ data, session, onEdit }: { data: ProfileData, session: any, onEdit: () => void }) {
     const hasContent = data.title || data.bio || data.location || data.phone;
+console.log(data);
 
     return (
         <div className="space-y-6">

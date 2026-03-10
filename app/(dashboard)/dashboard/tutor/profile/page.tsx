@@ -16,6 +16,7 @@ export interface ProfileData {
     bio: string;
     location: string;
     phone: string;
+    calendlyLink: string;
     education: Education[];
     subjects: Subject[];
     experience: Experience[];
@@ -29,7 +30,7 @@ export default function ProfilePage() {
     const [isEditing, setIsEditing] = useState(false);
 
     const [formData, setFormData] = useState<ProfileData>({
-        title: '', bio: '', location: '', phone: '',
+        title: '', bio: '', location: '', phone: '',calendlyLink: '',
         education: [{ degree: '', institution: '', year: '', field: '' }],
         subjects: [{ name: '', level: '' }],
         experience: [{ role: '', institution: '', period: '', description: '' }]
