@@ -31,12 +31,13 @@ export default function TutorProfilePage() {
     if (window.Calendly) {
       // @ts-ignore
       window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/shajidaislam34/30min'
+        url: tutor?.profile?.calendlyLink ||  'https://calendly.com/shajidaislam34/30min', // Fallback link
       });
     } else {
       alert("Calendly is still loading. Please try again in a second.");
     }
   };
+console.log(tutor?.profile?.calendlyLink);
 
   if (loading) return <div className="p-10 text-emerald-600 font-bold">Loading Profile...</div>;
   if (!tutor) return <div className="p-10 text-red-500 font-bold">Tutor not found.</div>;
