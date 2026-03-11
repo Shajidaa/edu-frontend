@@ -94,7 +94,7 @@ console.log(formData);
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-2  items-center gap-2">
                                 <Phone className="w-4 h-4 text-[#0f3d2e]" /> Calendly Link
                             </label>
                             <input

@@ -14,7 +14,7 @@ export default function TutorProfilePage() {
   useEffect(() => {
     const fetchTutorProfile = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/profile/${email}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/email/${email}`);
         setTutor(response.data);
       } catch (error) {
         console.error("Error loading profile", error);
@@ -31,13 +31,13 @@ export default function TutorProfilePage() {
     if (window.Calendly) {
       // @ts-ignore
       window.Calendly.initPopupWidget({
-        url: tutor?.profile?.calendlyLink ||  'https://calendly.com/shajidaislam34/30min', // Fallback link
+        url: tutor?.profile?.calendlyLink ||  'https://calendly.com/shajidaislam34/30min', 
       });
     } else {
       alert("Calendly is still loading. Please try again in a second.");
     }
   };
-console.log(tutor?.profile?.calendlyLink);
+
 
   if (loading) return <div className="p-10 text-emerald-600 font-bold">Loading Profile...</div>;
   if (!tutor) return <div className="p-10 text-red-500 font-bold">Tutor not found.</div>;
