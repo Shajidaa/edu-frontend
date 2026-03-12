@@ -95,7 +95,7 @@ export default function CourseCardHorizontal({ course }: { course: Course }) {
           </div>
           
           <div className="flex items-center gap-4">
-             <Link href="/kidsForCoding/register" className="px-8 py-2.5 border-2 border-green-600 text-green-700 font-bold rounded-lg hover:bg-green-600 hover:text-white transition-all duration-200 shadow-sm active:scale-95">
+             <Link href="/kidsForCoding/booking" className="px-8 py-2.5 border-2 border-green-600 text-green-700 font-bold rounded-lg hover:bg-green-600 hover:text-white transition-all duration-200 shadow-sm active:scale-95">
               Try a free lesson
             </Link>
             <button className="text-green-700 font-bold hover:text-green-900 text-sm md:text-base transition-colors">

@@ -56,7 +56,7 @@ const Satisfaction = () => {
 
         {/* CTA Button */}
         <div className="mt-10">
-          <Link href={'/kidsForCoding/register'} className="bg-[#007000] hover:bg-[#2ee02e] text-white font-bold py-4 px-10 rounded-md transition-transform active:scale-95 shadow-lg shadow-orange-200">
+          <Link href={'/kidsForCoding/booking'} className="bg-[#007000] hover:bg-[#2ee02e] text-white font-bold py-4 px-10 rounded-md transition-transform active:scale-95 shadow-lg shadow-orange-200">
             Try a free lesson
           </Link>
         </div>

@@ -70,7 +70,7 @@ export default function CourseCard({ course }: { course: Course }) {
             পাঠ্যক্রম ডাউনলোড করুন <FaDownload size={14} />
           </button>
         <Link 
-  href="/kidsForCoding/register"
+  href="/kidsForCoding/booking"
   className="block text-center w-full py-3 border-2 border-green-600 text-green-600 font-bold rounded-lg hover:bg-green-50 transition-colors"
 >
   Try a free lesson

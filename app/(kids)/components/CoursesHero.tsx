@@ -48,7 +48,7 @@ export default function TeacherSection() {
           </div>
 
           <div className="flex gap-4">
-            <Link href={'/kidsForCoding/register'} className="px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all">
+            <Link href={'/kidsForCoding/booking'} className="px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all">
               Try a free lesson
             </Link>
             <button className="px-8 py-3 border-2 border-green-600 text-green-700 font-bold rounded-lg hover:bg-green-50 transition-all">

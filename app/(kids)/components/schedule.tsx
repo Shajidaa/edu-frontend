@@ -87,7 +87,7 @@ export default function Schedule() {
                   </div>
                 </div>
 
-                <Link href={'/kidsForCoding/register'} className="w-full py-2.5 text-center border-2 border-green-600 text-green-600 font-bold rounded-lg mb-6 hover:bg-green-50 transition-colors">
+                <Link href={'/kidsForCoding/booking'} className="w-full py-2.5 text-center border-2 border-green-600 text-green-600 font-bold rounded-lg mb-6 hover:bg-green-50 transition-colors">
                   Try a free lesson
                 </Link>
 
