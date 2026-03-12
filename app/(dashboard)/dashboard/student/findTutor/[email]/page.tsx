@@ -16,6 +16,7 @@ export default function TutorProfilePage() {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/email/${email}`);
         setTutor(response.data);
+     
       } catch (error) {
         console.error("Error loading profile", error);
       } finally {
