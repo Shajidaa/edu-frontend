@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { name: 'Why Pear Deck Learning?', href: '/about', hasDropdown: true },
   { name: 'Resources & Community', href: '/resources', hasDropdown: true },
   { name: 'Pricing', href: '/pricing', hasDropdown: false },
-  {name:'Kids Section', href:'/kidsForCoding', hasDropdown:false}
+ 
 ];
 
 const SOLUTIONS_DATA = {
@@ -81,6 +81,7 @@ export default function Navbar() {
     setActiveMenu(activeMenu === name ? null : name);
   };
 
+
   return (
     <nav ref={navRef} className="sticky top-0 w-full bg-white border-b border-gray-100 z-[100]">
       <MyContainer className="mx-auto h-20 flex items-center justify-between">
@@ -116,19 +117,28 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          {session?.user ? (
+          {session?.user?.role !=="kid"  ? (
             <div className="flex items-center gap-4">
               <Link href="/dashboard" className=" xl:block text-sm font-bold text-slate-700 border-b-2 border-yellow-400">
                 Dashboard
               </Link>
 
-              <img  src={session.user.image || "/api/placeholder/32/32"} alt="User" className="w-8 h-8 rounded-full" />
+              <img  src={session?.user.image || "/api/placeholder/32/32"} alt="User" className="w-8 h-8 rounded-full" />
             </div>
-          ) : (
+          ):(session?.user?.role ==="kid"  ? (
+            <div className="flex items-center gap-4">
+              <Link href="/kidsForCoding" className=" xl:block text-sm font-bold text-slate-700 border-b-2 border-yellow-400">
+                Dashboard
+              </Link>
+
+              <img  src={session?.user.image || "/api/placeholder/32/32"} alt="User" className="w-8 h-8 rounded-full" />
+            </div>) : (
             <Link href="/signup" className="hidden text-nowrap sm:block bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
               Sign Up
             </Link>
-          )}
+          ))}
+
+
 
           <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="lg:hidden p-2 text-slate-700">
             {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
