@@ -36,26 +36,43 @@ export default function ProfilePage() {
         experience: [{ role: '', institution: '', period: '', description: '' }]
     });
 
-    const fetchProfile = async () => {
-        if (!session?.user?.email) return;
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/profile/${session.user.email}`);
-            if (response.ok) {
-                const data = await response.json();
-                if (data.profile) setFormData(data.profile);
+   const fetchProfile = async () => {
+    if (!session?.user?.email) return;
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/profile/${session.user.email}`);
+        if (response.ok) {
+            const data = await response.json();
+            if (data.profile) {
+                // SPREAD the data and provide fallbacks for all arrays
+                setFormData({
+                    ...data.profile,
+                    title: data.profile.title || '',
+                    bio: data.profile.bio || '',
+                    location: data.profile.location || '',
+                    phone: data.profile.phone || '',
+                    calendlyLink: data.profile.calendlyLink || '',
+                    education: data.profile.education || [],
+                    subjects: data.profile.subjects || [],
+                    experience: data.profile.experience || []
+                });
             }
-        } catch (error) {
-            console.error('Error fetching profile:', error);
-        } finally {
-            setLoading(false);
         }
-    };
+    } catch (error) {
+        console.error('Error fetching profile:', error);
+    } finally {
+        setLoading(false);
+    }
+};
 
     useEffect(() => { fetchProfile(); }, [session]);
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setSaving(true);
+      e.preventDefault();
+    if (!session?.user?.email) {
+        setMessage("User email not found. please login again.");
+        return;
+    }
+    setSaving(true);
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/profile`, {
                 method: 'PUT',

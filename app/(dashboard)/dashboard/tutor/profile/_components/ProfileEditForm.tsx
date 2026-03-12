@@ -11,16 +11,16 @@ interface EditProps {
 
 export function ProfileEditForm({ formData, setFormData, onSubmit, onCancel, saving }: EditProps) {
 
-    const updateField = (field: keyof ProfileData, value: any) => {
+    const updateField = (field: keyof ProfileData, value:any) => {
         setFormData(prev => ({ ...prev, [field]: value }));
     };
 
     const updateArrayField = (arrayName: 'education' | 'experience' | 'subjects', index: number, field: string, value: string) => {
-        const newArray = [...formData[arrayName]] as any[];
+        const newArray = [...formData[arrayName]] as Education[] | Experience[] | Subject[];
         newArray[index] = { ...newArray[index], [field]: value };
         updateField(arrayName, newArray);
     };
-console.log(formData);
+// console.log(formData);
 
     return (
         <form onSubmit={onSubmit} className="space-y-6">
@@ -127,7 +127,7 @@ console.log(formData);
                 </div>
 
                 <div className="space-y-4">
-                    {formData.education.map((edu, idx) => (
+                    {formData?.education?.map((edu, idx) => (
                         <div key={idx} className="relative p-5 border-2 border-gray-200 rounded-2xl hover:border-[#d9f99d] transition-all bg-gray-50">
                             <button
                                 type="button"
@@ -199,7 +199,7 @@ console.log(formData);
                 </div>
 
                 <div className="space-y-3">
-                    {formData.subjects.map((sub, idx) => (
+                    {formData?.subjects?.map((sub, idx) => (
                         <div key={idx} className="flex flex-col md:flex-row gap-3 items-center p-4 border-2 border-gray-200 rounded-xl hover:border-[#d9f99d] transition-all bg-gray-50">
                             <input
                                 placeholder="Subject (e.g., Algebra)"
@@ -246,7 +246,7 @@ console.log(formData);
                 </div>
 
                 <div className="space-y-4">
-                    {formData.experience.map((exp, idx) => (
+                    {formData?.experience?.map((exp, idx) => (
                         <div key={idx} className="relative p-5 border-2 border-gray-200 rounded-2xl hover:border-[#d9f99d] transition-all bg-gray-50">
                             <button
                                 type="button"

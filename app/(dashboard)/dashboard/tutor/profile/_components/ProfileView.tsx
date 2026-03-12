@@ -3,7 +3,7 @@ import { ProfileData } from '../page';
 
 export function ProfileView({ data, session, onEdit }: { data: ProfileData, session: any, onEdit: () => void }) {
     const hasContent = data.title || data.bio || data.location || data.phone;
-console.log(data);
+// console.log(data);
 
     return (
         <div className="space-y-6">
@@ -83,7 +83,7 @@ console.log(data);
                     </div>
 
                     <div className="space-y-4">
-                        {data.education.filter(edu => edu.degree || edu.institution).map((edu, i) => (
+                        {data?.education?.filter(edu => edu.degree || edu.institution).map((edu, i) => (
                             <div key={i} className="relative pl-6 pb-6 border-l-2 border-[#d9f99d] last:pb-0">
                                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0f3d2e] border-4 border-white"></div>
                                 <div className="bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors">
@@ -104,7 +104,7 @@ console.log(data);
                                 </div>
                             </div>
                         ))}
-                        {data.education.filter(edu => edu.degree || edu.institution).length === 0 && (
+                        {data?.education?.filter(edu => edu.degree || edu.institution).length === 0 && (
                             <p className="text-gray-500 italic">No education information added yet.</p>
                         )}
                     </div>
@@ -120,7 +120,7 @@ console.log(data);
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                        {data.subjects.filter(sub => sub.name).map((sub, i) => (
+                        {data?.subjects?.filter(sub => sub.name).map((sub, i) => (
                             <div key={i} className="group relative">
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0f3d2e] to-[#1a533f] rounded-xl blur opacity-25 group-hover:opacity-40 transition"></div>
                                 <div className="relative px-4 py-3 bg-gradient-to-br from-[#d9f99d] to-[#bef264] text-[#0f3d2e] rounded-xl font-semibold shadow-md hover:shadow-lg transition-all">
@@ -129,7 +129,7 @@ console.log(data);
                                 </div>
                             </div>
                         ))}
-                        {data.subjects.filter(sub => sub.name).length === 0 && (
+                        {data?.subjects?.filter(sub => sub.name).length === 0 && (
                             <p className="text-gray-500 italic">No subjects added yet.</p>
                         )}
                     </div>
@@ -137,7 +137,7 @@ console.log(data);
             </div>
 
             {/* Experience Section */}
-            {data.experience.filter(exp => exp.role || exp.institution).length > 0 && (
+            {data?.experience?.filter(exp => exp.role || exp.institution).length > 0 && (
                 <div className="bg-white rounded-3xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
                     <div className="flex items-center gap-3 mb-6">
                         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
@@ -147,7 +147,7 @@ console.log(data);
                     </div>
 
                     <div className="space-y-6">
-                        {data.experience.filter(exp => exp.role || exp.institution).map((exp, i) => (
+                        {data?.experience?.filter(exp => exp.role || exp.institution).map((exp, i) => (
                             <div key={i} className="relative pl-8 pb-6 border-l-2 border-gray-200 last:pb-0">
                                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0f3d2e] border-4 border-white"></div>
                                 <div className="bg-gray-50 p-5 rounded-xl hover:bg-gray-100 transition-colors">
