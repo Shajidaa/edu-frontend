@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import WhatsAppLiveWidget from "./(marketing)/components/WhatsAppLive/page";
+import { ToastContainer } from "react-toastify";
 
 
 const lexend = Lexend({
@@ -26,9 +27,10 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} antialiased`}
       >
-        
+       
           {children}
          <WhatsAppLiveWidget/>
+       <ToastContainer position="top-center" /> 
       </body>
     </html>
   );

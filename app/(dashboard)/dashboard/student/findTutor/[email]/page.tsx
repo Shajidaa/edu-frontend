@@ -6,6 +6,7 @@ import { CheckCircle, MapPin, Phone, GraduationCap, Briefcase, BookOpen, Calenda
 import Link from 'next/link';
 import Script from 'next/script';
 import { useSession } from 'next-auth/react';
+import { toast } from 'react-toastify/unstyled';
 
 
 export default function TutorProfilePage() {
@@ -58,7 +59,7 @@ useEffect(() => {
           inviteeUri: inviteeUri,
           startTime: new Date().toISOString(), 
         });
-        alert("Booking saved in our database!");
+   toast.success("Meeting booked successfully!");
       } catch (error) {
         console.error("Error saving booking:", error);
       }

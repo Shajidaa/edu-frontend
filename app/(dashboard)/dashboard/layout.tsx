@@ -4,6 +4,7 @@ import { useState } from "react";
 import Providers from "@/app/(marketing)/components/Providers";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
+import { ToastContainer } from "react-toastify/unstyled";
 
 export default function Layout({
   children,
@@ -25,6 +26,7 @@ export default function Layout({
               </div>
             </main>
           </div>
+                 <ToastContainer position="top-center" autoClose={1500} /> 
         </Providers>
       </body>
     </html>
