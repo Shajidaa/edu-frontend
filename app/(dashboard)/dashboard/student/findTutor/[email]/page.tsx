@@ -5,11 +5,15 @@ import { useParams } from 'next/navigation';
 import { CheckCircle, MapPin, Phone, GraduationCap, Briefcase, BookOpen, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import Script from 'next/script';
+import { useSession } from 'next-auth/react';
+
 
 export default function TutorProfilePage() {
   const { email } = useParams();
   const [tutor, setTutor] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
+   const { data: session } = useSession();
 
   useEffect(() => {
     const fetchTutorProfile = async () => {
@@ -25,8 +29,7 @@ export default function TutorProfilePage() {
     };
     if (email) fetchTutorProfile();
   }, [email]);
-
-  // Function to trigger the Calendly popup
+ // Function to trigger the Calendly popup
   const openCalendly = () => {
     // @ts-ignore
     if (window.Calendly) {
@@ -38,6 +41,34 @@ export default function TutorProfilePage() {
       alert("Calendly is still loading. Please try again in a second.");
     }
   };
+useEffect(() => {
+  const handleCalendlyEvent = async (e : { data: { event: string; payload: { invitee: { uri: string } } } }) => {
+    // চেক করা হচ্ছে ইভেন্টটি ক্যালেন্ডলি বুকিং কি না
+    if (e.data.event && e.data.event === "calendly.event_scheduled") {
+  
+      
+      const inviteeUri = e.data.payload.invitee.uri;
+
+      // ব্যাকএন্ডে ডাটা পাঠানো
+      try {
+        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bookings/manual`, {
+          tutorEmail: tutor.email,
+          studentEmail: session?.user?.email, 
+          studentName: session?.user?.name,     
+          inviteeUri: inviteeUri,
+          startTime: new Date().toISOString(), 
+        });
+        alert("Booking saved in our database!");
+      } catch (error) {
+        console.error("Error saving booking:", error);
+      }
+    }
+  };
+
+  window.addEventListener("message", handleCalendlyEvent);
+  return () => window.removeEventListener("message", handleCalendlyEvent);
+}, [tutor, session]);
+ 
 
 
   if (loading) return <div className="p-10 text-emerald-600 font-bold">Loading Profile...</div>;
