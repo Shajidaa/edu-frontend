@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { BookOpen, GraduationCap, Sparkles } from "lucide-react";
 import Bottom from "./_components/Bottom";
+import SectionWrapper from "../components/share/SectionWrapper";
 
 export default function LoginPage() {
   const handleGoogleSignIn = async (role: string) => {
@@ -45,10 +46,11 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Cards Section - Responsive Grid Logic */}
+       <SectionWrapper direction="left">
+           {/* Cards Section - Responsive Grid Logic */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
-            {/* Student Card */}
+  {/* Student Card */}
             <div className="group relative h-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#d9f99d] to-[#bef264] rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-3xl p-6 md:p-10 h-full flex flex-col shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
@@ -77,7 +79,8 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Kids Card */}
+          
+   {/* Kids Card */}
             <div className="group relative h-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-3xl p-6 md:p-10 h-full flex flex-col shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
@@ -105,8 +108,9 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+        
 
-            {/* Tutor Card - Spans full width on medium screens to keep symmetry */}
+    {/* Tutor Card - Spans full width on medium screens to keep symmetry */}
             <div className="group relative h-full md:col-span-2 lg:col-span-1">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#d9f99d] to-[#bef264] rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-3xl p-6 md:p-10 h-full flex flex-col shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
@@ -134,9 +138,10 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+          
 
           </div>
-
+</SectionWrapper>
           <Bottom />
           
           {/* Decorative Elements - Hidden on small screens to avoid overflow */}
