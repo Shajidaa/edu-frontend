@@ -117,34 +117,27 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+       <div className="flex items-center gap-4">
+          {/* USER SESSION SECTION */}
           {session?.user?.role ? (
-            <div className="flex items-center gap-4">
-              <Link href="/dashboard" className=" xl:block text-sm font-bold text-slate-700 border-b-2 border-yellow-400">
-                Dashboard
-              </Link>
-
-              <img  src={session?.user.image } alt="User" className="w-8 h-8 rounded-full" />
+            <div className="flex items-center gap-3 bg-slate-50 p-1.5 pr-4 rounded-full border border-slate-100">
+                <img  src={session?.user?.image || ""} alt="User" className="w-8 h-8 rounded-full ring-2 ring-white shadow-sm" />
+                <Link href={session.user.role === "kid" ? "/kidsForCoding" : "/dashboard"} 
+                      className="text-xs font-bold text-slate-700 uppercase tracking-tight hover:text-green-600">
+                  Dashboard
+                </Link>
             </div>
           ) : (
-            <Link href="/signup" className="hidden text-nowrap sm:block bg-[#C1FF31] text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b5f020] transition-all">
+            <Link href="/signup" className="hidden sm:inline-flex items-center justify-center bg-[#C1FF31] text-slate-900 px-7 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-[#C1FF31]/20 hover:-translate-y-0.5 transition-all active:translate-y-0">
               Sign Up
             </Link>
           )}
 
-{
-  
-(session?.user?.role ==="kid"  && (
-            <div className="flex items-center gap-4">
-              <Link href="/kidsForCoding" className=" xl:block text-sm font-bold text-slate-700 border-b-2 border-yellow-400">
-                Dashboard
-              </Link>
-
-              <img  src={session?.user.image} alt="User" className="w-8 h-8 rounded-full" />
-            </div>))
-}
-          <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="lg:hidden p-2 text-slate-700">
-            {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
+          <button 
+            onClick={() => setIsMobileOpen(!isMobileOpen)} 
+            className="lg:hidden p-2 text-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
+          >
+            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </MyContainer>
@@ -239,4 +232,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+} 
