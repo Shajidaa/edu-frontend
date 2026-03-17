@@ -10,6 +10,7 @@ import {
   BookOpen
 } from 'lucide-react';
 import { useUserRole } from '../hooks/useUserRole';
+import SectionWrapper from '@/app/(marketing)/components/share/SectionWrapper';
 
 export default function DashboardPage() {
   const { data: session } = useSession();
@@ -84,7 +85,8 @@ export default function DashboardPage() {
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Upcoming Sessions */}
+        <SectionWrapper direction='right'> 
+          {/* Upcoming Sessions */}
         <div className="lg:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="p-4 sm:p-6 border-b border-gray-200">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Upcoming Sessions</h2>
@@ -110,9 +112,10 @@ export default function DashboardPage() {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Recent Activity */}
+        </div></SectionWrapper>
+       
+ <SectionWrapper direction='left'>
+  {/* Recent Activity */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="p-4 sm:p-6 border-b border-gray-200">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Recent Activity</h2>
@@ -134,6 +137,8 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+ </SectionWrapper>
+      
       </div>
 
       {/* Quick Actions */}
