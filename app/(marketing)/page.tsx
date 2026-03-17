@@ -9,7 +9,7 @@ import SectionWrapper from "./components/share/SectionWrapper";
 export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
-      {/* Banner usually scroll-er baire thake, tai eta default rakha bhalo */}
+      
       <Banner />
 
       <SectionWrapper direction="up" delay={0.1}>
