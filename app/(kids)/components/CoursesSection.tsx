@@ -5,6 +5,9 @@ import CourseCard from "./courseCard";
 
 export default function CoursesSection() {
      const { data} = useFetch<Course>('/courses');
+     if (!data) {
+        return <div>Loading...</div>;
+      }
   return (
     <MyContainer className="py-12">
         <h1 className="text-3xl md:text-4xl text-gray-800 font-bold text-center mb-8">Choose an AI & coding course that excites your child</h1>

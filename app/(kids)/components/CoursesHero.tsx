@@ -1,3 +1,4 @@
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 import Link from 'next/link';
 import React from 'react';
 
@@ -10,8 +11,8 @@ const stats = [
 
 export default function TeacherSection() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+    <section className="py-20  bg-white">
+      <MyContainer className=" px-4 flex flex-col lg:flex-row items-center gap-12">
         {/* Teacher Image Collage */}
         <div className="lg:w-1/2 flex justify-center">
           <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]">
@@ -56,7 +57,7 @@ export default function TeacherSection() {
             </button>
           </div>
         </div>
-      </div>
+      </MyContainer>
     </section>
   );
 }

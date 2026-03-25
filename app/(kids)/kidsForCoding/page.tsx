@@ -13,21 +13,21 @@ export default function KidsForCoding() {
   return (
    <>
    <Hero/>
-   <SectionWrapper direction="up" delay={0.1}>
+
     <CoursesSection/>
-     </SectionWrapper> 
-      <SectionWrapper direction="right" >
+     
+    
          <Schedule/>   
-         </SectionWrapper> 
+       
    
-      <SectionWrapper direction="left" >     <Benefits/>  </SectionWrapper> 
+           <Benefits/>   
 
-      <SectionWrapper direction="right" >      <Testimonials/> </SectionWrapper> 
+           <Testimonials/>  
 
-    <SectionWrapper direction="left" >    <TeacherSection/>   </SectionWrapper> 
+       <TeacherSection/>    
 
 
-    <SectionWrapper direction="right" >    <Satisfaction/>   </SectionWrapper> 
+        <Satisfaction/>    
 
    </>
   )

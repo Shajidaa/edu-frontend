@@ -8,6 +8,8 @@ import { FaPlayCircle, FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
+
 
 const testimonials = [
   {
@@ -55,7 +57,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
+      <MyContainer className="px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-12">
           Students and parents love Next gen learning’s training program <br className="hidden md:block"/> and curriculum
         </h2>
@@ -108,7 +110,7 @@ export default function Testimonials() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </MyContainer>
 
       <style jsx global>{`
         .testimonial-swiper .swiper-button-next,
