@@ -1,22 +1,40 @@
 "use client";
 
 import { InlineWidget } from "react-calendly";
-import { HiStar, HiCheckCircle, HiPhone, HiClock, HiUserGroup } from 'react-icons/hi';
+import { HiStar, HiCheckCircle, HiPhone, HiClock } from 'react-icons/hi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
+import { useState, useEffect } from "react";
+
+const grades = Array.from({ length: 12 }, (_, i) => `Grade ${i + 1}`);
 
 export default function Booking() {
+  const [grade, setGrade] = useState("Grade 1");
+  const [currentTime, setCurrentTime] = useState("");
+
+  // Update time every minute
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }));
+    };
+
+    updateTime();
+    const timer = setInterval(updateTime, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <MyContainer className=" grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <MyContainer className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         {/* LEFT COLUMN: Testimonial Card */}
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
-            <FaQuoteLeft className="text-emerald-100 text-6xl absolute top-6 left-6 -z-0 opacity-50" />
+            <FaQuoteLeft className="text-emerald-100 text-6xl absolute top-6 left-6 z-0 opacity-50" />
             <div className="relative z-10">
               <p className="text-lg font-medium text-slate-700 leading-relaxed mb-8">
-                The customisable courses at next gen learning give my child a real advantage: 
+                The custom is able courses at next gen learning give my child a real advantage: 
                 academically, socially, and in technology. Highly recommended!
               </p>
               
@@ -38,13 +56,13 @@ export default function Booking() {
 
           <div className="px-2">
             <div className="flex items-center gap-1 text-emerald-500 mb-2">
-              <span className="text-slate-400 mr-2">★ Trustpilot</span>
+              <span className="text-slate-400 mr-2">★ Trust pilot</span>
               {[...Array(5)].map((_, i) => <HiStar key={i} className="w-4 h-4 fill-current" />)}
             </div>
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
               TrustScore 4.8 | 564 reviews
             </p>
-            <p className="text-[10px] text-slate-300 mt-8">© 2026  Inc. (USA)</p>
+            <p className="text-[10px] text-slate-300 mt-8">© 2026 Inc. (USA)</p>
           </div>
         </div>
 
@@ -54,9 +72,23 @@ export default function Booking() {
             <h1 className="text-3xl font-bold text-slate-800 tracking-tight leading-tight">
               Book a free lesson to enter the magical world of <span className="text-emerald-600">AI & Coding</span>
             </h1>
-            <p className="text-sm text-slate-500 mt-3 font-medium">
-              You&rsquo;re in <span className="text-emerald-600 underline cursor-pointer">Grade 1 Change</span> • Local time: <span className="text-slate-700">08:45 AM</span>
-            </p>
+            
+            {/* INLINE SELECT AND DYNAMIC TIME */}
+            <div className="text-sm text-slate-500 mt-3 font-medium flex items-center flex-wrap gap-1">
+              <span>You&rsquo;re in</span>
+              <div className="relative inline-block">
+                <select 
+                  value={grade}
+                  onChange={(e) => setGrade(e.target.value)}
+                  className="appearance-none bg-transparent border-b border-emerald-600 text-emerald-600 font-bold cursor-pointer focus:outline-none pr-1"
+                >
+                  {grades.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+              </div>
+              <span className="mx-1">• Local time: <span className="text-slate-700">{currentTime || "Loading..."}</span></span>
+            </div>
           </header>
 
           {/* Calendly Inline Widget */}
@@ -68,13 +100,13 @@ export default function Booking() {
                 backgroundColor: 'ffffff',
                 hideEventTypeDetails: false,
                 hideLandingPageDetails: false,
-                primaryColor: '10b981', // Emerald 500
+                primaryColor: '10b981',
                 textColor: '334155'
               }}
             />
           </div>
 
-          {/* Feature List (Matching the gray box in image) */}
+          {/* Feature List */}
           <div className="bg-slate-100/80 rounded-2xl p-6 space-y-3">
             <div className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
               <HiCheckCircle className="text-emerald-500 w-5 h-5" /> No credit card required
@@ -124,7 +156,6 @@ export default function Booking() {
             </p>
           </div>
         </div>
-
       </MyContainer>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Hero from '../components/Hero'
 import CoursesSection from '../components/CoursesSection'
 import Schedule from '../components/schedule'
@@ -7,7 +7,7 @@ import Testimonials from '../components/Testimonials'
 
 import TeacherSection from '../components/CoursesHero'
 import Satisfaction from '../components/satisfaction'
-import SectionWrapper from '@/app/(marketing)/components/share/SectionWrapper'
+
 
 export default function KidsForCoding() {
   return (
