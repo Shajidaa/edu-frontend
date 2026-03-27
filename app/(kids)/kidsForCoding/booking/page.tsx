@@ -5,6 +5,7 @@ import { HiStar, HiCheckCircle, HiPhone, HiClock } from 'react-icons/hi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const grades = Array.from({ length: 12 }, (_, i) => `Grade ${i + 1}`);
 
@@ -27,9 +28,12 @@ export default function Booking() {
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <MyContainer className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
+      
         {/* LEFT COLUMN: Testimonial Card */}
         <div className="lg:col-span-4 space-y-6">
+            <Link href="/kidsForCoding" className="text-sm text-emerald-600 font-bold mb-4 inline-flex items-center gap-1">
+          <span className="text-lg">←</span> Back to courses
+        </Link>
           <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
             <FaQuoteLeft className="text-emerald-100 text-6xl absolute top-6 left-6 z-0 opacity-50" />
             <div className="relative z-10">
@@ -90,7 +94,7 @@ export default function Booking() {
               <span className="mx-1">• Local time: <span className="text-slate-700">{currentTime || "Loading..."}</span></span>
             </div>
           </header>
-
+  
           {/* Calendly Inline Widget */}
           <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
             <InlineWidget 
