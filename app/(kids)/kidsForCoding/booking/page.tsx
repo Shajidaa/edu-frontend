@@ -4,16 +4,16 @@ import { InlineWidget } from "react-calendly";
 import { HiStar, HiCheckCircle, HiPhone, HiClock } from 'react-icons/hi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const grades = Array.from({ length: 12 }, (_, i) => `Grade ${i + 1}`);
 
-export default function Booking() {
+function BookingForm() {
   const [grade, setGrade] = useState("Grade 1");
   const [currentTime, setCurrentTime] = useState("");
-// 2. Initialize searchParams
+
   const searchParams = useSearchParams();
   const selectedCourse = searchParams.get("course"); 
   // Update time every minute
@@ -166,5 +166,16 @@ export default function Booking() {
         </div>
       </MyContainer>
     </div>
+  );
+}
+export default function Booking() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <p className="text-slate-500 font-medium">Loading booking options...</p>
+      </div>
+    }>
+      <BookingForm />
+    </Suspense>
   );
 }
