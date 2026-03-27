@@ -23,7 +23,7 @@ export default function CourseCard({ course }: { course: Course }) {
       </div>
 
       <div className="p-5">
-        <h2 className="text-xl font-bold text-gray-800 mb-4 leading-tight">
+        <h2 className="text-xl line-clamp-2 font-bold text-gray-800 mb-4 leading-tight">
           {course.course_title}
         </h2>
 
@@ -53,8 +53,8 @@ export default function CourseCard({ course }: { course: Course }) {
 
         {/* Learning Outcomes */}
         <div className="mb-6">
-          <h3 className="font-bold text-gray-700 mb-3">Learning outcomes</h3>
-          <ul className="space-y-2">
+          <h3 className="font-bold  text-gray-700 mb-3">Learning outcomes</h3>
+          <ul className="space-y-2 h-48 lg:h-52 border-gray-300">
             {course.learning_outcomes.map((outcome, index) => (
               <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
                 <FaCheckCircle className="text-green-500 mt-1 shrink-0" />
