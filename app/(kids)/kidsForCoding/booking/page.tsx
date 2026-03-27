@@ -6,13 +6,16 @@ import { FaQuoteLeft } from 'react-icons/fa';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const grades = Array.from({ length: 12 }, (_, i) => `Grade ${i + 1}`);
 
 export default function Booking() {
   const [grade, setGrade] = useState("Grade 1");
   const [currentTime, setCurrentTime] = useState("");
-
+// 2. Initialize searchParams
+  const searchParams = useSearchParams();
+  const selectedCourse = searchParams.get("course"); 
   // Update time every minute
   useEffect(() => {
     const updateTime = () => {
@@ -73,10 +76,11 @@ export default function Booking() {
         {/* RIGHT COLUMN: Booking Flow */}
         <div className="lg:col-span-8 space-y-8">
           <header>
-            <h1 className="text-3xl font-bold text-slate-800 tracking-tight leading-tight">
-              Book a free lesson to enter the magical world of <span className="text-emerald-600">AI & Coding</span>
-            </h1>
             
+            <h1 className="text-3xl font-bold text-slate-800 tracking-tight leading-tight">
+              {/* 3. Dynamic Heading Logic */}
+             Book a free lesson to enter the magical world of  <span className="text-emerald-600">{selectedCourse || "AI & Coding"}</span>
+            </h1>
             {/* INLINE SELECT AND DYNAMIC TIME */}
             <div className="text-sm text-slate-500 mt-3 font-medium flex items-center flex-wrap gap-1">
               <span>You&rsquo;re in</span>

@@ -69,8 +69,9 @@ export default function CourseCard({ course }: { course: Course }) {
           <button className="flex items-center justify-center gap-2 w-full text-green-600 font-semibold hover:text-green-700 transition-colors">
             পাঠ্যক্রম ডাউনলোড করুন <FaDownload size={14} />
           </button>
-        <Link 
-  href="/kidsForCoding/booking"
+
+<Link 
+  href={`/kidsForCoding/booking?course=${encodeURIComponent(course.course_title)}`}
   className="block text-center w-full py-3 border-2 border-green-600 text-green-600 font-bold rounded-lg hover:bg-green-50 transition-colors"
 >
   Try a free lesson
