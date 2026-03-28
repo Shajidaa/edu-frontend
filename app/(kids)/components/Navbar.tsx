@@ -66,6 +66,11 @@ export default function Navbar() {
             isOpen={activeDropdown === 'Camps'}
             onToggle={() => toggleDropdown('Camps')}
           />
+          <Link href="/kidsForCoding/competitions" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding/competitions' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
+          Competition
+          </Link>
           <Link href={'/kidsForCoding/booking'} className="bg-green-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-700 transition-all">
             Try a Free Lesson
           </Link>
@@ -84,11 +89,19 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
           <div className="flex flex-col p-4 gap-2">
-            <Link href="/kidsForCoding" className="w-full py-3 text-center text-gray-800 font-medium">
+            <Link href="/kidsForCoding" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
               Home
             </Link>
             <MobileNavItem label="Courses" href="/kidsForCoding/courses" sublinks={coursesLinks} />
+           
             <MobileNavItem label="Camps" href="/kidsForCoding/camps" sublinks={campsLinks} />
+               <Link href="/kidsForCoding/competitions" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding/competitions' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
+          Competition
+          </Link>
             <Link href="/kidsForCoding/booking" className="w-full mt-4 text-center bg-green-600 text-white py-3 rounded-lg font-bold">
               Try a Free Lesson
             </Link>

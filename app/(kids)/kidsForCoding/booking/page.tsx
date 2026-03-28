@@ -16,6 +16,7 @@ function BookingForm() {
 
   const searchParams = useSearchParams();
   const selectedCourse = searchParams.get("course"); 
+  
   // Update time every minute
   useEffect(() => {
     const updateTime = () => {
