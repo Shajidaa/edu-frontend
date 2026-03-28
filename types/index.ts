@@ -9,3 +9,13 @@ interface Course {
   description: string;     
   learning_outcomes: string[]; 
 }
+interface Competition {
+  id: number;
+  title: string;
+  host: string;
+  time_info: string; 
+  team_size: string; 
+  grade_range: string; 
+  status: 'practice' | 'completed';
+  prize?: string | null;
+}
