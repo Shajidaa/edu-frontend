@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import CompetitionCard from "../../components/CompetitionCard";
+import MyContainer from "@/app/(marketing)/components/share/MyContainer";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 
 export default function CompetitionsPage() {
@@ -23,12 +26,14 @@ export default function CompetitionsPage() {
     };
     fetchCompetitions();
   }, []);
-console.log(competitions);
 
-  if (loading) return <div className="p-10 text-center text-emerald-600">Loading competitions...</div>;
+
+  if (loading) return <div className="p-10 text-center min-h-screen text-emerald-600">Loading competitions...</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-slate-50 min-h-screen">
+    <MyContainer className=" flex flex-col lg:grid lg:grid-cols-12 gap-10 py-10 min-h-screen">
+      {/* Main Content */}
+      <div className="lg:col-span-8">
       <h1 className="text-2xl font-bold mb-6">All Coding Competitions</h1>
       
       {/* Practice Section */}
@@ -54,6 +59,36 @@ console.log(competitions);
       ) : (
         <p className="text-slate-500">No completed competitions available.</p>
       )}
-    </div>
+        </div>
+        {/* Sidebar */}
+      <div className="lg:col-span-4 space-y-6">
+          {/* Sidebar Card 1 */}
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm">
+             <div className="h-32 bg-rose-50 rounded-xl mb-4 flex items-center justify-center">
+                <span className="text-rose-400 italic font-serif">Illustration Space</span>
+             </div>
+             <h4 className="font-bold text-slate-800">Play while you learn and win amazing prizes</h4>
+             <p className="text-xs text-slate-500 mt-2">Real-time leaderboard • Weekly awards</p>
+             <button className="mt-4 w-full bg-rose-500 text-white py-2 rounded-lg font-bold hover:bg-rose-600 transition-colors">
+               Take a quiz now
+             </button>
+          </div>
+
+          {/* Sidebar Card 2 (Next Gen Specific) */}
+          <div className="bg-emerald-600 p-6 rounded-2xl text-white relative overflow-hidden">
+             <div className="relative z-10">
+               <p className="text-emerald-100 text-xs font-bold uppercase mb-2">Next Gen Learning</p>
+               <h4 className="text-xl font-bold leading-tight">Your key to winning hackathons & coding challenges</h4>
+               <Link href={'/kidsForCoding/booking'} className="mt-6 bg-white text-emerald-700 px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 mx-auto">
+                 Try a free lesson <ChevronRight size={16}/>
+               </Link>
+             </div>
+             {/* Decorative Background Circles */}
+             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-500 rounded-full opacity-50"></div>
+          </div>
+        </div>
+        
+     
+    </MyContainer>
   );
 }
