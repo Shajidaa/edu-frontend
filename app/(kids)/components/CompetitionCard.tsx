@@ -1,5 +1,6 @@
 import React from "react";
 import { Calendar, GraduationCap, Trophy, Users } from "lucide-react";
+import Link from "next/link";
 
 export default function CompetitionCard({ comp }: { comp: Competition }) {
   const isPractice = comp.status === 'practice';
@@ -30,13 +31,13 @@ export default function CompetitionCard({ comp }: { comp: Competition }) {
       </div>
 
       <div className="mt-4 md:mt-0 w-full md:w-auto">
-        <button className={`w-full md:w-40 py-2.5 px-4 rounded-lg font-bold transition-colors ${
+        <Link href={isPractice ? `/kidsForCoding/register` : `/kidsForCoding/competitions/${comp.id}`} className={`w-full text-nowrap md:w-40 py-2.5 px-4 rounded-lg font-bold transition-colors ${
           isPractice 
           ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm" 
           : "border-2 border-rose-500 text-rose-500 hover:bg-rose-50 font-semibold"
         }`}>
           {isPractice ? "Register & Start" : "View Competition"}
-        </button>
+        </Link>
         {!isPractice && <p className="text-[10px] text-center mt-1 text-slate-400">Competition has ended</p>}
       </div>
     </div>

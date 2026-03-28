@@ -59,7 +59,7 @@ export default function CompetitionsPage() {
       ) : (
         <p className="text-slate-500">No completed competitions available.</p>
       )}
-        </div>
+       </div>
         {/* Sidebar */}
       <div className="lg:col-span-4 space-y-6">
           {/* Sidebar Card 1 */}
@@ -86,7 +86,7 @@ export default function CompetitionsPage() {
              {/* Decorative Background Circles */}
              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-500 rounded-full opacity-50"></div>
           </div>
-        </div>
+      </div>
         
      
     </MyContainer>
