@@ -76,6 +76,11 @@ export default function Navbar() {
           }`}>
           Quizzes
           </Link>
+          <Link href="/kidsForCoding/blogs" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding/blogs' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
+          Blogs
+          </Link>
           <Link href={'/kidsForCoding/booking'} className="bg-green-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-700 transition-all">
             Try a Free Lesson
           </Link>
@@ -111,6 +116,11 @@ export default function Navbar() {
             pathname === '/kidsForCoding/quizzes' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
           }`}>
           Quizzes
+          </Link>
+               <Link href="/kidsForCoding/blogs" className={`text-sm font-semibold transition-colors ${
+            pathname === '/kidsForCoding/blogs' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
+          }`}>
+          Blogs
           </Link>
             <Link href="/kidsForCoding/booking" className="w-full mt-4 text-center bg-green-600 text-white py-3 rounded-lg font-bold">
               Try a Free Lesson
