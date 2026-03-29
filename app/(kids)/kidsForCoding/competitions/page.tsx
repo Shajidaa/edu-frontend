@@ -69,10 +69,10 @@ export default function CompetitionsPage() {
                 <span className="text-rose-400 italic font-serif">Illustration Space</span>
              </div>
              <h4 className="font-bold text-slate-800">Play while you learn and win amazing prizes</h4>
-             <p className="text-xs text-slate-500 mt-2">Real-time leaderboard • Weekly awards</p>
-             <button className="mt-4 w-full bg-rose-500 text-white py-2 rounded-lg font-bold hover:bg-rose-600 transition-colors">
+             <p className="text-xs mb-2 text-slate-500 mt-2">Real-time leaderboard • Weekly awards</p>
+             <Link href={'/kidsForCoding/quizzes'} className="mt-4 w-full bg-rose-500 text-white py-2 px-3 rounded-lg font-bold hover:bg-rose-600 transition-colors">
                Take a quiz now
-             </button>
+             </Link>
           </div>
 
           {/* Sidebar Card 2 (Next Gen Specific) */}
