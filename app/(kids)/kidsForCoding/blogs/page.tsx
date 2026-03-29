@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaCalendarAlt, FaUser, FaArrowRight, FaGamepad, FaRobot, FaPuzzlePiece } from 'react-icons/fa';
+import Link from 'next/link';
 
 // -----------------------------------------------------------------------------
 // Types & Interfaces
@@ -137,10 +138,10 @@ export default function BlogPage() {
               </p>
               
               <div>
-                <button className="flex items-center gap-2 font-semibold text-emerald-600 hover:text-emerald-700 transition-colors group">
+                <Link href={`/kidsForCoding/blogs/${featuredPost.id}`} className="flex items-center gap-2 font-semibold text-emerald-600 hover:text-emerald-700 transition-colors group">
                   Read Full Article 
                   <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -188,10 +189,10 @@ export default function BlogPage() {
                 </p>
                 
                 <div className="mt-auto">
-                  <button className="text-emerald-600 text-sm font-semibold hover:text-emerald-700 transition-colors flex items-center gap-1 group">
+                  <Link href={`/kidsForCoding/blogs/${post.id}`} className="text-emerald-600 text-sm font-semibold hover:text-emerald-700 transition-colors flex items-center gap-1 group">
                     Read More 
                     <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>
@@ -229,10 +230,10 @@ export default function BlogPage() {
                 </p>
                 
                 <div className="mt-auto">
-                  <button className="text-emerald-600 text-sm font-semibold hover:text-emerald-700 transition-colors flex items-center gap-1 group">
+                  <Link href={`/kidsForCoding/blogs/${post.id}`} className="text-emerald-600 text-sm font-semibold hover:text-emerald-700 transition-colors flex items-center gap-1 group">
                     Read More 
                     <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>
