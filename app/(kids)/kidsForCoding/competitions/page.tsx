@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import CompetitionCard from "../../components/CompetitionCard";
 import MyContainer from "@/app/(marketing)/components/share/MyContainer";
 import { ChevronRight } from "lucide-react";
@@ -17,7 +17,7 @@ export default function CompetitionsPage() {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/competitions`);
         const data = await response.json();
-        // Since your controller returns { competitions: [...], meta: {...} }
+      
         setCompetitions(data);
       } catch (error) {
         console.error("Error fetching:", error);
