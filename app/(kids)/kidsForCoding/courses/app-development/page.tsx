@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Users, Globe, Star, ShieldCheck, 
   Clock, BookOpen, PlayCircle, CheckCircle2,
-  Smartphone, Code2, Layout, Zap 
+  Smartphone, Code2, Layout, Zap, 
+  Link
 } from 'lucide-react';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
@@ -45,7 +46,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </ul>
       </div>
       <div className="flex gap-4">
-        <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Try a free lesson</button>
+        <Link href={'/kidsForCoding/booking'} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Try a free lesson</Link>
         <button className="border border-green-600 text-green-600 hover:bg-green-50 px-6 py-2 rounded-lg font-semibold transition-colors">View curriculum</button>
       </div>
     </div>

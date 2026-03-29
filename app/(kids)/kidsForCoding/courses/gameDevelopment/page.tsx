@@ -2,9 +2,11 @@ import React from 'react';
 import { 
   Users, Globe, Star, ShieldCheck, 
   Clock, BookOpen, PlayCircle, CheckCircle2,
-  Gamepad2, Trophy, Monitor, Layers 
+  Gamepad2, Trophy, Monitor, Layers, 
+  
 } from 'lucide-react';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
+import Link from 'next/link';
 
 // Types for our Curriculum Cards
 interface CourseCardProps {
@@ -45,7 +47,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </ul>
       </div>
       <div className="flex gap-4">
-        <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Try a free lesson</button>
+        <Link href={'/kidsForCoding/booking'} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Try a free lesson</Link>
         <button className="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 py-2 rounded-lg font-semibold transition-colors">View curriculum</button>
       </div>
     </div>

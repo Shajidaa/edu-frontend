@@ -5,6 +5,7 @@ import {
   Blocks, Palette, MousePointer2, Wand2 
 } from 'lucide-react';
 import MyContainer from '@/app/(marketing)/components/share/MyContainer';
+import Link from 'next/link';
 
 // Types for our Curriculum Cards
 interface CourseCardProps {
@@ -45,7 +46,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </ul>
       </div>
       <div className="flex gap-4">
-        <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Book a free class</button>
+        <Link href={'/kidsForCoding/booking'} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">Book a free class</Link>
         <button className="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 py-2 rounded-lg font-semibold transition-colors">View projects</button>
       </div>
     </div>
