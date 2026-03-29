@@ -1,4 +1,4 @@
-interface Course {
+export interface Course {
   _id: string;
   course_title: string;
   age_range: string;        
@@ -9,7 +9,7 @@ interface Course {
   description: string;     
   learning_outcomes: string[]; 
 }
-interface Competition {
+export interface Competition {
   id: number;
   title: string;
   host: string;
@@ -18,4 +18,22 @@ interface Competition {
   grade_range: string; 
   status: 'practice' | 'completed';
   prize?: string | null;
+}
+
+export interface Question {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+}
+
+export interface QuizCard {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  grade: string;
+  level: string;
+  questions: Question[];
+  color: string; // Tailwind class for the header bg
 }

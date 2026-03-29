@@ -5,6 +5,7 @@ import CompetitionCard from "../../components/CompetitionCard";
 import MyContainer from "@/app/(marketing)/components/share/MyContainer";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { Competition } from "@/types";
 
 
 export default function CompetitionsPage() {

@@ -3,6 +3,18 @@ import MyContainer from "@/app/(marketing)/components/share/MyContainer";
 import useFetch from "../hooks/useFetch";
 import CourseCard from "./courseCard";
 
+interface Course {
+  _id: string;
+  course_title: string;
+  age_range: string;
+  grade_range: string;
+  lessons: string;
+  duration: string;
+  description: string;
+  students_enrolled?: string;
+  curriculum_count: string;
+  learning_outcomes: string[];
+}
 export default function CoursesSection() {
      const { data} = useFetch<Course>('/courses');
      if (!data) {

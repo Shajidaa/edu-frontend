@@ -1,9 +1,19 @@
 
 
+import { Course } from '@/types';
 import Link from 'next/link';
 import { FaGraduationCap, FaBookOpen, FaRegClock, FaCheckCircle, FaDownload } from 'react-icons/fa';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
-
+// interface Course {
+//   course_title: string;
+//   age_range: string;  
+//   grade_range: string;
+//   curriculum_count: string;
+//   lessons: string;
+//   duration: string;
+//   description: string;
+//   learning_outcomes: string[];
+// }
 export default function CourseCard({ course }: { course: Course }) {
   return (
     <div className="max-w-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-white hover:shadow-xl transition-shadow duration-300">

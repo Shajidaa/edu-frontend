@@ -1,7 +1,17 @@
 import React from "react";
 import { Calendar, GraduationCap, Trophy, Users } from "lucide-react";
 import Link from "next/link";
-
+import { Competition } from "@/types";
+// interface Competition {
+//   id: string;
+//   title: string;
+//   host: string;
+//   time_info: string; 
+//   team_size: string;  
+//   grade_range: string; 
+//   status: 'practice' | 'completed';
+//   prize?: string | null;
+// }
 export default function CompetitionCard({ comp }: { comp: Competition }) {
   const isPractice = comp.status === 'practice';
 
