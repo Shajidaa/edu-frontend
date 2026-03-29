@@ -91,6 +91,7 @@ import Image from 'next/image';
 import { LuPlay, LuGraduationCap,  LuX } from "react-icons/lu";
 import { LucideBarChart } from 'lucide-react';
 import { QuizCard } from '@/types';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
 
 export default function QuizzesPage() {
@@ -122,7 +123,7 @@ export default function QuizzesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-8">
+    <div className=" bg-slate-50 p-8">
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-slate-800 border-b-4 border-orange-400 inline-block pb-1">
           Coding quizzes for kids and teens
@@ -134,7 +135,7 @@ export default function QuizzesPage() {
 
       {/* Grid View */}
       {!activeQuiz && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <MyContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {QUIZ_DATA.map((quiz) => (
             <div key={quiz.id} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
               <div className={`${quiz.color} h-48 relative flex items-center justify-center p-6 text-white text-center`}>
@@ -167,7 +168,7 @@ export default function QuizzesPage() {
               </div>
             </div>
           ))}
-        </div>
+        </MyContainer>
       )}
 
       {/* MCQ Quiz Modal/Overlay */}
