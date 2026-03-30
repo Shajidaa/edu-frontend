@@ -48,7 +48,7 @@ export default function LoginPage() {
 
        <SectionWrapper direction="left">
            {/* Cards Section - Responsive Grid Logic */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
 
   {/* Student Card */}
             <div className="group relative h-full">
@@ -111,7 +111,7 @@ export default function LoginPage() {
         
 
     {/* Tutor Card - Spans full width on medium screens to keep symmetry */}
-            <div className="group relative h-full md:col-span-2 lg:col-span-1">
+            {/* <div className="group relative h-full md:col-span-2 lg:col-span-1">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#d9f99d] to-[#bef264] rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-3xl p-6 md:p-10 h-full flex flex-col shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#0f3d2e] to-[#1a533f] rounded-2xl flex items-center justify-center mb-6 shadow-lg">
@@ -137,7 +137,7 @@ export default function LoginPage() {
                   <span>Continue as Tutor</span>
                 </button>
               </div>
-            </div>
+            </div> */}
           
 
           </div>

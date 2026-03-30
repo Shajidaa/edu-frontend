@@ -68,7 +68,7 @@ export default function Benefits() {
           <p className="text-slate-500 text-sm mb-6">
             Start with a free trial lesson at your preferred date & time. No commitments, fees, or credit card required.
           </p>
-          <Link href={'/kidsForCoding/ContactPage'} className="bg-green-600 hover:bg-green-700 text-white font-black px-10 py-4 rounded-lg text-lg transition-all shadow-lg shadow-green-100 active:scale-95 uppercase tracking-wide">
+          <Link href={'/kidsForCoding/booking'} className="bg-green-600 hover:bg-green-700 text-white font-black px-10 py-4 rounded-lg text-lg transition-all shadow-lg shadow-green-100 active:scale-95 uppercase tracking-wide">
             Try a free lesson
           </Link>
         </div>
