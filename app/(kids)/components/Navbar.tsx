@@ -107,17 +107,17 @@ export default function Navbar() {
             <MobileNavItem label="Courses" href="/kidsForCoding/courses" sublinks={coursesLinks} />
            
             <MobileNavItem label="Camps" href="/kidsForCoding/camps" sublinks={campsLinks} />
-               <Link href="/kidsForCoding/competitions" className={`text-sm font-semibold transition-colors ${
+               <Link href="/kidsForCoding/competitions" className={`text-md mb-2  transition-colors ${
             pathname === '/kidsForCoding/competitions' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
           }`}>
           Competition
           </Link>
-               <Link href="/kidsForCoding/quizzes" className={`text-sm font-semibold transition-colors ${
+               <Link href="/kidsForCoding/quizzes" className={`text-md mb-2  transition-colors ${
             pathname === '/kidsForCoding/quizzes' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
           }`}>
           Quizzes
           </Link>
-               <Link href="/kidsForCoding/blogs" className={`text-sm font-semibold transition-colors ${
+               <Link href="/kidsForCoding/blogs" className={`text-md mb-2  transition-colors ${
             pathname === '/kidsForCoding/blogs' ? 'text-green-600' : 'text-gray-600 hover:text-green-500'
           }`}>
           Blogs

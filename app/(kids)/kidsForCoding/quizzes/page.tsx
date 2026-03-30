@@ -86,7 +86,7 @@
 ];
 
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Image from 'next/image';
 import { LuPlay, LuGraduationCap,  LuX } from "react-icons/lu";
 import { LucideBarChart } from 'lucide-react';
