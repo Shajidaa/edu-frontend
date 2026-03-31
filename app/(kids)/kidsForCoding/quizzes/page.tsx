@@ -1,7 +1,14 @@
 "use client";
 
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { LuPlay, LuGraduationCap, LuX, LuTrophy, LuPartyPopper } from "react-icons/lu";
+import { LucideBarChart } from 'lucide-react';
+import Confetti from 'react-confetti'; // কনফেত্তির জন্য এটি লাগবে
+import { QuizCard } from '@/types';
+import MyContainer from '@/app/(marketing)/components/share/MyContainer';
 
- export const QUIZ_DATA: QuizCard[] = [
+export const QUIZ_DATA: QuizCard[] = [
   {
     id: '1',
     title: 'Programming Basics',
@@ -85,20 +92,30 @@
   }
 ];
 
-
-import  { useState } from 'react';
-import Image from 'next/image';
-import { LuPlay, LuGraduationCap,  LuX } from "react-icons/lu";
-import { LucideBarChart } from 'lucide-react';
-import { QuizCard } from '@/types';
-import MyContainer from '@/app/(marketing)/components/share/MyContainer';
-
-
 export default function QuizzesPage() {
   const [activeQuiz, setActiveQuiz] = useState<QuizCard | null>(null);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  
+// Confetti state for perfect score celebration
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+  
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+
+    handleResize();
+
+
+    window.addEventListener('resize', handleResize);
+
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleAnswer = (selected: string) => {
     if (!activeQuiz) return;
@@ -122,46 +139,57 @@ export default function QuizzesPage() {
     setShowResults(false);
   };
 
+  const isPerfectScore = activeQuiz && score === activeQuiz.questions.length;
+
   return (
-    <div className=" bg-slate-50 p-8">
-      <header className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-slate-800 border-b-4 border-orange-400 inline-block pb-1">
+    <div className="bg-slate-50 p-4 md:p-8 min-h-screen">
+
+      {showResults && isPerfectScore && (
+        <Confetti width={windowSize.width} 
+        height={windowSize.height} numberOfPieces={300} recycle={false}
+        run={showResults && isPerfectScore} />
+      )}
+
+      <header className="text-center mb-8 md:mb-12">
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-800 border-b-4 border-orange-400 inline-block pb-1">
           Coding quizzes for kids and teens
         </h1>
-        <p className="text-slate-600 mt-4">
+        <p className="text-sm md:text-base text-slate-600 mt-4 max-w-2xl mx-auto">
           Great collection of fun and interactive coding quizzes to assess and acquire computer science knowledge.
         </p>
       </header>
 
       {/* Grid View */}
       {!activeQuiz && (
-        <MyContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <MyContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {QUIZ_DATA.map((quiz) => (
             <div key={quiz.id} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-              <div className={`${quiz.color} h-48 relative flex items-center justify-center p-6 text-white text-center`}>
+              <div className={`${quiz.color} h-40 md:h-48 relative flex items-center justify-center p-6 text-white text-center`}>
                  <Image 
                     src={quiz.image} 
                     alt={quiz.title} 
                     fill 
                     className="object-cover opacity-40 mix-blend-overlay"
                  />
-                 <h3 className="relative z-10 text-2xl font-bold">{quiz.title}</h3>
+                 <h3 className="relative z-10 text-xl md:text-2xl font-bold">{quiz.title}</h3>
               </div>
               
-              <div className="p-6 flex-grow">
-                <h4 className="font-bold text-slate-800 mb-4">{quiz.title}</h4>
-                <div className="space-y-2 text-sm text-slate-600 mb-6">
-                  <div className="flex items-center gap-2">
-                    <LuGraduationCap className="text-slate-400" /> Grade: {quiz.grade}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <LucideBarChart className="text-slate-400" /> {quiz.level} level
+              <div className="p-5 md:p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-slate-800 mb-3">{quiz.title}</h4>
+                  <div className="space-y-2 text-sm text-slate-600 mb-6">
+                    <div className="flex items-center gap-2">
+                      <LuGraduationCap className="text-slate-400" /> Grade: {quiz.grade}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <LucideBarChart className="text-slate-400" /> {quiz.level} level
+                    </div>
                   </div>
                 </div>
 
                 <button 
                   onClick={() => setActiveQuiz(quiz)}
-                  className="w-full py-2 px-4 border-2 border-rose-500 text-rose-500 font-bold rounded-lg hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 border-2 border-rose-500 text-rose-500 font-bold rounded-lg hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2"
                 >
                   <LuPlay fill="currentColor" size={12} /> Play now
                 </button>
@@ -173,48 +201,76 @@ export default function QuizzesPage() {
 
       {/* MCQ Quiz Modal/Overlay */}
       {activeQuiz && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
-            <div className="p-4 bg-slate-100 border-b flex justify-between items-center">
-              <span className="font-bold text-slate-700">{activeQuiz.title}</span>
-              <button onClick={resetQuiz} className="p-2 hover:bg-slate-200 rounded-full transition-colors">
+        <div className="fixed inset-0 mt-45 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div className="p-4 bg-white border-b flex justify-between items-center sticky top-0 bg-white z-10">
+              <span className="font-bold text-slate-700 truncate mr-2">{activeQuiz.title}</span>
+              <button onClick={resetQuiz} className="p-2 hover:bg-slate-200 rounded-full transition-colors flex-shrink-0">
                 <LuX size={20} />
               </button>
             </div>
 
-            <div className="p-8">
+            <div className="p-5 md:p-8">
               {!showResults ? (
                 <>
-                  <div className="mb-8">
-                    <span className="text-sm font-medium text-emerald-600 mb-2 block">
+                  <div className="mb-6 md:mb-8">
+                    <span className="text-xs md:text-sm font-medium text-emerald-600 mb-2 block">
                       Question {currentQuestionIdx + 1} of {activeQuiz.questions.length}
                     </span>
-                    <h2 className="text-2xl font-bold text-slate-800">
+                    <h2 className="text-xl md:text-2xl font-bold text-slate-800">
                       {activeQuiz.questions[currentQuestionIdx].question}
                     </h2>
                   </div>
 
-                  <div className="grid gap-4">
+                  <div className="grid gap-3 md:gap-4">
                     {activeQuiz.questions[currentQuestionIdx].options.map((option, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleAnswer(option)}
-                        className="text-left p-4 rounded-xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all font-medium text-slate-700"
+                        className="text-left p-3 md:p-4 rounded-xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all font-medium text-slate-700 text-sm md:text-base"
                       >
                         {option}
                       </button>
                     ))}
                   </div>
                 </>
+              ) : isPerfectScore ? (
+            
+                <div className="text-center py-4 md:py-6 flex flex-col items-center">
+                  <div className="bg-amber-100 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-4 animate-bounce flex-shrink-0">
+                    <LuTrophy size={40} className="text-amber-500" />
+                  </div>
+                  
+                  <h2 className="text-2xl md:text-4xl font-black mb-2 text-slate-800 flex items-center justify-center gap-2 flex-wrap">
+                    <span>You are a Rockstar!</span> 
+                    <LuPartyPopper className="text-pink-500 shrink-0" size={28} />
+                  </h2>
+                  
+                  <p className="text-sm md:text-lg text-slate-600 mb-2">
+                    You answered all questions perfectly!
+                  </p>
+                  
+                  <p className="text-lg md:text-2xl mb-6 md:mb-8 font-bold text-emerald-600 bg-emerald-50 px-5 md:px-6 py-1.5 md:py-2 rounded-full inline-block">
+                    Score: {score} / {activeQuiz.questions.length} 
+                  </p>
+                  
+                  <button 
+                    onClick={resetQuiz}
+                    className="w-full md:w-auto bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-emerald-700 transition-colors shadow-lg hover:shadow-emerald-200"
+                  >
+                    Play Another Quiz
+                  </button>
+                </div>
               ) : (
-                <div className="text-center py-8">
-                  <h2 className="text-3xl font-bold mb-2">Quiz Complete! 🎉</h2>
-                  <p className="text-xl text-slate-600 mb-8">
-                    You scored <span className="text-emerald-600 font-bold">{score}</span> out of {activeQuiz.questions.length}
+            
+                <div className="text-center py-6 md:py-8">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-slate-800">Quiz Complete! 🎉</h2>
+                  <p className="text-base md:text-xl text-slate-600 mb-6 md:mb-8">
+                    You scored <span className="text-rose-500 font-bold">{score}</span> out of {activeQuiz.questions.length}
                   </p>
                   <button 
                     onClick={resetQuiz}
-                    className="bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-emerald-700 transition-colors"
+                    className="w-full md:w-auto bg-slate-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors"
                   >
                     Back to Quizzes
                   </button>
