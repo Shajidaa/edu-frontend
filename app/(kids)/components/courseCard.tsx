@@ -1,20 +1,22 @@
 
 
 import { Course } from '@/types';
+import { saveAs } from 'file-saver';
 import Link from 'next/link';
 import { FaGraduationCap, FaBookOpen, FaRegClock, FaCheckCircle, FaDownload } from 'react-icons/fa';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
-// interface Course {
-//   course_title: string;
-//   age_range: string;  
-//   grade_range: string;
-//   curriculum_count: string;
-//   lessons: string;
-//   duration: string;
-//   description: string;
-//   learning_outcomes: string[];
-// }
+
 export default function CourseCard({ course }: { course: Course }) {
+  const downloadPDF = () => {
+    
+   const pdfUrl = '/PythonProgramming.pdf'; 
+    
+
+    const fileName = `${course.course_title}_Syllabus.pdf`;
+    
+ 
+    saveAs(pdfUrl, fileName);
+  };
   return (
     <div className="max-w-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-white hover:shadow-xl transition-shadow duration-300">
       {/* Header Image Area */}
@@ -76,9 +78,12 @@ export default function CourseCard({ course }: { course: Course }) {
 
         {/* Actions */}
         <div className="space-y-4">
-          <button className="flex items-center justify-center gap-2 w-full text-green-600 font-semibold hover:text-green-700 transition-colors">
-            পাঠ্যক্রম ডাউনলোড করুন <FaDownload size={14} />
-          </button>
+         <button 
+        onClick={downloadPDF}
+        className="flex items-center justify-center gap-2 w-full text-green-600 font-semibold hover:text-green-700 transition-colors"
+      >
+        পাঠ্যক্রম ডাউনলোড করুন <FaDownload size={14} />
+      </button>
 
 <Link 
   href={`/kidsForCoding/booking?course=${encodeURIComponent(course.course_title)}`}
