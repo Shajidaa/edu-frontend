@@ -15,7 +15,7 @@ import {
   X, UserCircle
 } from 'lucide-react';
 import { useUserRole } from '../hooks/useUserRole';
-import Logo from '@/app/(marketing)/components/share/Logo';
+import Logo from '@/app/(after)/components/share/Logo';
 
 interface SidebarProps {
   isOpen: boolean;

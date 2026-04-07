@@ -1,32 +1,34 @@
-import AudienceSection from "./components/home/AudienceSection";
-import Banner from "./components/home/Banner";
-import FeatureSection from "./components/home/FeatureSection";
-import LessonFeature from "./components/home/LessonFeature";
-import Statistics from "./components/home/Statistics";
-import SectionWrapper from "./components/share/SectionWrapper";
+
+import Hero from './components/Hero'
+import CoursesSection from './components/CoursesSection'
+import Schedule from './components/schedule'
+import Benefits from './components/benefits'
+import Testimonials from './components/Testimonials'
+
+import TeacherSection from './components/CoursesHero'
+import Satisfaction from './components/satisfaction'
 
 
-export default function Home() {
+export default function KidsForCoding() {
   return (
-    <main className="relative overflow-x-hidden">
-      
-      <Banner />
+   <>
+   <Hero/>
 
-      <SectionWrapper direction="up" delay={0.1}>
-        <Statistics />
-      </SectionWrapper>
+    <CoursesSection/>
+     
+    
+         <Schedule/>   
+       
+   
+           <Benefits/>   
 
-      <SectionWrapper direction="left">
-        <FeatureSection />
-      </SectionWrapper>
+           <Testimonials/>  
 
-      <SectionWrapper direction="right">
-        <LessonFeature />
-      </SectionWrapper>
+       <TeacherSection/>    
 
-      <SectionWrapper direction="up">
-        <AudienceSection />
-      </SectionWrapper>
-    </main>
-  );
+
+        <Satisfaction/>    
+
+   </>
+  )
 }

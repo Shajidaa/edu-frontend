@@ -1,39 +1,27 @@
-import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+"use client";
 
-import Providers from "./components/Providers";
-import Navbar from "./components/share/navbar";
-import Footer from "./components/share/Footer";
-
-
-const lexend = Lexend({
-  variable: "--font-lexend",
-  subsets: ["latin"],
-});
+import Footer from "@/app/(after)/components/share/Footer";
+import Navbar from "./components/Navbar";
 
 
 
-export const metadata: Metadata = {
-  title: "Next Gen Learning",
-  description: "Next Gen Learning helps teachers deliver powerful learning moments to every student, every day. Our all-in-one platform gives teachers the time-saving support they need to create lessons students love, deliver differentiated support for every learner, and assess progress whenever it’s needed.",
-};
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+
   return (
     <html lang="en">
-      <body
-        className={`${lexend.variable} antialiased`}
-      >
-        <Providers>
-          <Navbar
-           />
-          {children}
-          <Footer />
-        </Providers>
+      <body>
+    
+<Navbar/>
+          
+                {children}
+             
+     <Footer/>
       </body>
     </html>
   );

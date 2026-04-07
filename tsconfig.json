@@ -37,7 +37,7 @@
     "**/*.mts",
     "app/login/page.js",
     "app/(dashboard)/(studentDashboard)/tutors"
-, "app/(marketing)/signup/page.jsx", "app/context/AuthProvider.jsx", "app/(dashboard)/student/findTutor"  ],
+, "app/(after)/signup/page.jsx", "app/context/AuthProvider.jsx", "app/(dashboard)/student/findTutor"  ],
   "exclude": [
     "node_modules"
   ]
