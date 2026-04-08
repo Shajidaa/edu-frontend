@@ -3,7 +3,7 @@
 import { InlineWidget } from "react-calendly";
 import { HiStar, HiCheckCircle, HiPhone, HiClock, HiArrowRight } from 'react-icons/hi';
 import { FaQuoteLeft } from 'react-icons/fa';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

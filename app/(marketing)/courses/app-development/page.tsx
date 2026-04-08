@@ -5,7 +5,7 @@ import {
   Smartphone, Code2, Layout, Zap, 
   Link
 } from 'lucide-react';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 // Types for our Curriculum Cards
 interface CourseCardProps {

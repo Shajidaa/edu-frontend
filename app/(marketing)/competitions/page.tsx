@@ -2,7 +2,7 @@
 
 import  { useEffect, useState } from "react";
 import CompetitionCard from "../components/CompetitionCard";
-import MyContainer from "@/app/(after)/components/share/MyContainer";
+import MyContainer from "@/app/(student)/components/share/MyContainer";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Competition } from "@/types";

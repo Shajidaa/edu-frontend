@@ -1,4 +1,4 @@
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 import Link from 'next/link';
 import React from 'react';
 

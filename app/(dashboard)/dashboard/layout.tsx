@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Providers from "@/app/(after)/components/Providers";
+import Providers from "@/app/(student)/components/Providers";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import { ToastContainer } from "react-toastify/unstyled";

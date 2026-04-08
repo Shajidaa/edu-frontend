@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "@/app/(after)/components/share/Footer";
+import Footer from "@/app/(student)/components/share/Footer";
 import Navbar from "./components/Navbar";
 
 

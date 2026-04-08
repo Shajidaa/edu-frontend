@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react'; 
-import Logo from '@/app/(after)/components/share/Logo';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import Logo from '@/app/(student)/components/share/Logo';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 // --- Data ---
 const coursesLinks = [

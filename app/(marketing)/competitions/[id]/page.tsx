@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Trophy, Users, Clock } from "lucide-react";
-import MyContainer from "@/app/(after)/components/share/MyContainer";
+import MyContainer from "@/app/(student)/components/share/MyContainer";
 import { Competition } from "@/types";
 
 // Dynamic route parameters interface

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Rocket, Ticket, Star, MousePointer2 } from 'lucide-react'
-import MyContainer from '@/app/(after)/components/share/MyContainer'
+import MyContainer from '@/app/(student)/components/share/MyContainer'
 
 export default function BlackHeroSection() {
   return (

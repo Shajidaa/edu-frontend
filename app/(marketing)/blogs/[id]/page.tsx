@@ -12,7 +12,7 @@ import {
   FaRegHeart,
   FaShareAlt
 } from 'react-icons/fa';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 // -----------------------------------------------------------------------------
 // Types & Interfaces

@@ -10,7 +10,7 @@ import {
   BookOpen
 } from 'lucide-react';
 import { useUserRole } from '../hooks/useUserRole';
-import SectionWrapper from '@/app/(after)/components/share/SectionWrapper';
+import SectionWrapper from '@/app/(student)/components/share/SectionWrapper';
 
 export default function DashboardPage() {
   const { data: session } = useSession();

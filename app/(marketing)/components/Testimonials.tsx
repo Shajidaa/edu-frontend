@@ -8,7 +8,7 @@ import { FaPlayCircle, FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 
 const testimonials = [

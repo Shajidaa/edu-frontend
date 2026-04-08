@@ -5,7 +5,7 @@ import {
   Gamepad2, Trophy, Monitor, Layers, 
   
 } from 'lucide-react';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 import Link from 'next/link';
 
 // Types for our Curriculum Cards

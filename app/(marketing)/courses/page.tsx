@@ -1,5 +1,5 @@
 "use client"
-import MyContainer from "@/app/(after)/components/share/MyContainer";
+import MyContainer from "@/app/(student)/components/share/MyContainer";
 
 import useFetch from "../hooks/useFetch";
 import CourseCardHorizontal from "../components/CourseCardHorizontal";

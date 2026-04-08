@@ -2,7 +2,7 @@
 import React from 'react';
 import useFetch from '@/app/(marketing)/hooks/useFetch';
 import { BookOpen, Users, CheckCircle2, ArrowRight } from 'lucide-react';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 interface camp {
   _id: string;

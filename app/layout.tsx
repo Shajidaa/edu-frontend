@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import WhatsAppLiveWidget from "./(after)/components/WhatsAppLive/page";
+import WhatsAppLiveWidget from "./(student)/components/WhatsAppLive/page";
 import { ToastContainer } from "react-toastify";
 
 

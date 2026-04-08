@@ -6,7 +6,7 @@ import { LuPlay, LuGraduationCap, LuX, LuTrophy, LuPartyPopper } from "react-ico
 import { LucideBarChart } from 'lucide-react';
 import Confetti from 'react-confetti'; 
 import { QuizCard } from '@/types';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 export const QUIZ_DATA: QuizCard[] = [
   {

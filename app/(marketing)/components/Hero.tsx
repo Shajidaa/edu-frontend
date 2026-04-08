@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FaVideo, FaChalkboardTeacher, FaChartLine, FaStar, FaGoogle, FaAmazon, FaCheckCircle } from 'react-icons/fa';
 import { SiYcombinator } from 'react-icons/si';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 
 
 export default function Hero() {

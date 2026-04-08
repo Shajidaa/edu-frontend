@@ -4,7 +4,7 @@ import {
   Clock, BookOpen, PlayCircle, CheckCircle2,
   Layout, ScreenShare, Share2, MousePointerClick 
 } from 'lucide-react';
-import MyContainer from '@/app/(after)/components/share/MyContainer';
+import MyContainer from '@/app/(student)/components/share/MyContainer';
 import Link from 'next/link';
 
 // Types for our Curriculum Cards
