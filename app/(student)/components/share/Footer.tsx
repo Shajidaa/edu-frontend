@@ -96,7 +96,7 @@ export default function Footer() {
 
         {/* Copyright and Socials */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-800 pt-8">
-          <p className="text-xs text-gray-400">© 2026 Pear Deck Learning. All Rights Reserved.</p>
+          <p className="text-xs text-gray-400">© 2026 Next gen learning. All Rights Reserved.</p>
           <div className="flex gap-3">
             {['In', 'Yo', 'X', 'Ig', 'Fb'].map((social) => (
               <div key={social} className="w-6 h-6 bg-[#bef264] rounded-full flex items-center justify-center text-[10px] text-black font-bold cursor-pointer hover:scale-110 transition-transform">
